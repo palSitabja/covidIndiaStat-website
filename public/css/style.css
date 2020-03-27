@@ -1,0 +1,26 @@
+canvas{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#card-id{
+    height: 500px;
+}
+/* .card{
+    box-shadow: black;
+} */
+
+.card-deck{
+    padding: 40px 60px 40px 60px;
+  }
+.th{
+    font-size:x-large;
+    font-weight: bolder;
+    font-family: monospace;
+}
+.td{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: monospace;
+}

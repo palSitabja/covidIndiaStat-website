@@ -17,41 +17,43 @@ var data=[[[],[],[],[],[],[],[]],[[],[],[],[],[]]]
 var delta=[]
 //console.log(publicDirectoryPath+viewsPath+partialsPath);
 
-request.get({url,json:true},(error,response)=>{
-    if(error){
-        res.status(500).send(error)
-    }else{
-        response.body.cases_time_series.forEach(element => {
-            data[0][0].push(element.dailyconfirmed)
-            data[0][1].push(element.dailydeceased)
-            data[0][2].push(element.dailyrecovered)
-            data[0][3].push(element.totalconfirmed)
-            data[0][4].push(element.totaldeceased)
-            data[0][5].push(element.totalrecovered)
-            data[0][6].push(element.date)
-        });
-        //console.log(data[0][0][0]);
-        response.body.statewise.forEach(element1=>{
-            data[1][0].push(element1.active)
-            data[1][1].push(element1.confirmed)
-            data[1][2].push(element1.deaths)
-            data[1][3].push(element1.state)
-            data[1][4].push(element1.recovered)
-        })
-        delta.push(response.body.key_values[0].confirmeddelta)
-        delta.push(response.body.key_values[0].deceaseddelta)
-        delta.push(response.body.key_values[0].recovereddelta)
-        data.push(delta)
-        //console.log(data)
-    }
-})
+
 
 app.get('',(req,res)=>{
-    res.render('index',{})
+    request.get({url,json:true},(error,response)=>{
+        if(error){
+            res.status(500).send(error)
+        }else{
+            response.body.cases_time_series.forEach(element => {
+                data[0][0].push(element.dailyconfirmed)
+                data[0][1].push(element.dailydeceased)
+                data[0][2].push(element.dailyrecovered)
+                data[0][3].push(element.totalconfirmed)
+                data[0][4].push(element.totaldeceased)
+                data[0][5].push(element.totalrecovered)
+                data[0][6].push(element.date)
+            });
+            //console.log(data[0][0][0]);
+            response.body.statewise.forEach(element1=>{
+                data[1][0].push(element1.active)
+                data[1][1].push(element1.confirmed)
+                data[1][2].push(element1.deaths)
+                data[1][3].push(element1.state)
+                data[1][4].push(element1.recovered)
+            })
+            delta.push(response.body.key_values[0].confirmeddelta)
+            delta.push(response.body.key_values[0].deceaseddelta)
+            delta.push(response.body.key_values[0].recovereddelta)
+            data.push(delta)
+            //console.log(data)
+            res.render('index',{})
+        }
+    })
 })
 
 app.get('/data', (req, res) => {
     res.send(data)
+    data=[[[],[],[],[],[],[],[]],[[],[],[],[],[]]]
     //res.render('index',{})
 })
 app.listen(port,()=>{

@@ -20,7 +20,7 @@ fetch(url).then((response)=>{
                     backgroundColor:'#fc9272',
                     borderColor:'#fc9272',
                     data:data[0][3],
-                    fill:true
+                    fill:false
                 }]
             },
             options:{
@@ -58,7 +58,7 @@ fetch(url).then((response)=>{
                     backgroundColor:'#FB9EA3',
                     borderColor:'#FB9EA3',
                     data:data[0][4],
-                    fill:true
+                    fill:false
                 }]
             },
             options:{
@@ -98,7 +98,7 @@ fetch(url).then((response)=>{
                     backgroundColor:'#addd8e',
                     borderColor:'#addd8e',
                     data:data[0][5],
-                    fill:true
+                    fill:false
                 }]
             },
             options:{

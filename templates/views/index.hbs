@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/all.css">
     <title>CovidIndia-Stats</title>
 </head>
 
@@ -65,38 +64,22 @@
     </nav>
     <div class="container" style="margin-top: 25px;">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card border-warning shadow p-3 mb-5 bg-white rounded" style="border-width:2px;">
-                    <div class="card-body" style="">
-                        <h5 class="card-title th text-center font-weight-bold" style="color: #FFC107;">Total Confirmed</h5>
-                        <p id="conf" class="card-text td text-center" style="color:#FFC107;"></p>
-                    </div>
-                </div>
+            <div class="col-4 div-conf" >
+                <h6 class="text-center text-uppercase h6-1" style="">Confirmed</h6>
+                <p id="conf" class="text-center p-update" style="color:#FFC107;"></p>
             </div>
-            {{!-- <div class="col-md-2">
-            </div> --}}
-            <div class="col-md-4">
-                <div class="card border-success shadow p-3 mb-5 bg-white rounded" style="border-width:2px;">
-                    <div class="card-body">
-                        <h5 class="card-title th text-center font-weight-bold" style="color: #28A745;">Total Recovered</h5>
-                        <p id="recover" class="card-text td text-center" style="color: #27A243;"></p>
-                    </div>
-                </div>
+            <div class="col-4 div-rec">
+                <h6 class="text-center text-uppercase h6-2" style="">Recovered</h6>
+                <p id="recover" class="text-center p-update" style="color: #27A243;"></p>
             </div>
-            {{!-- <div class="col-md-2">
-            </div> --}}
-            <div class="col-md-4">
-                <div class="card border-danger shadow p-3 mb-5 bg-white rounded" style="border-width:2px;">
-                    <div class="card-body">
-                        <h5 class="card-title th text-center font-weight-bold" style="color: #D53343;">Total Death</h5>
-                        <p id="dec" class="card-text td text-center" style="color:#DC3545;"></p>
-                    </div>
-                </div>
+            <div class="col-4 div-dec">
+                <h6 class="text-center text-uppercase h6-3" style="">Deceased</h6>
+                <p id="dec" class="text-center p-update" style="color:#DC3545;"></p>
             </div>
         </div>
     </div>
-    <div class="container line-1" style="margin-top: 0px;">
-        <div class="card card col-mb-3 shadow p-3 mb-5 bg-white rounded">
+    <div class="container line-1" style="margin-top: 25px;">
+        <div class="card card col-mb-3 shadow-sm p-3 mb-5 bg-white rounded">
             <div class="card-body">
                 <canvas id="line1"></canvas>
             </div>
@@ -105,7 +88,7 @@
     <div class="container"style="margin-top: 50px;">
         <div class="row">
             <div class="col-md-6">
-                <div id="card-id" class="card shadow p-3 mb-5 bg-white rounded">
+                <div id="card-id" class="card shadow-sm p-3 mb-5 bg-white rounded">
                     <div class="card-body">
                         <canvas id="line2"></canvas>
                     </div>
@@ -113,7 +96,7 @@
             </div>
 
             <div class="col-md-6">
-                <div id="card-id" class="card shadow p-3 mb-5 bg-white rounded">
+                <div id="card-id" class="card shadow-sm p-3 mb-5 bg-white rounded">
                     <div class="card-body">
                         <canvas id="line3"></canvas>
                     </div>
@@ -122,7 +105,7 @@
         </div>
     </div>
     <div class="container" style="margin-top: 0px;">
-        <div id="card-id" class="card shadow p-3 mb-5 bg-white rounded">
+        <div id="card-id" class="card shadow-sm p-3 mb-5 bg-white rounded">
             <div class="card-body">
                 <canvas id="bar1"></canvas>
             </div>

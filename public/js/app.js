@@ -41,7 +41,7 @@ fetch(url).then((response)=>{
             }    
         })
         const chart2=document.getElementById('line2')
-        chart2.height=400;
+        //chart2.height=400;
         let lineChart2=new Chart(chart2,{
             type:'line',
             data:{
@@ -81,7 +81,7 @@ fetch(url).then((response)=>{
 
 
         const chart3=document.getElementById('line3')
-        chart3.height=400;
+        //chart3.height=400;
         let lineChart3=new Chart(chart3,{
             type:'line',
             data:{
@@ -121,7 +121,7 @@ fetch(url).then((response)=>{
 
 
         const bar1=document.getElementById('bar1')
-        chart3.height=800;
+        //chart3.height=800;
         let barchart1=new Chart(bar1,{
             type:'bar',
             data:{

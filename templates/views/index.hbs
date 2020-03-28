@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/all.css">
-    <title>Document</title>
+    <title>CovidIndia-Stats</title>
 </head>
 
 <body>
@@ -57,99 +57,92 @@
                 </li>
             </ul>
             <div class="form-inline my-2 my-lg-0">
-                <a href="https://github.com/palSitabja/node_weather_website" class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button" style="color: "#F8F9FA";">GitHub</a>
-                <button class="btn btn-outline-info"data-toggle="modal" data-target="#exampleModal">About</button>
+                <a href="https://github.com/palSitabja/covidIndiaStat-website" target="_blank" class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button" style="color: "#F8F9FA";">GitHub</a>
+                <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">About</button>
                 <!-- Button trigger modal -->
-
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="card" style="border: none;">
-            <div class="card-body">
-                <table class="table table-borderless ">
-                    {{!-- <thead>
-                        <tr>
-                            <th id="th" scope="col" style="color: rgb(223, 11, 205);">Total Confirmed</th>
-                            <th id="th" scope="col" style="color: #15BA00;">Total Recovered</th>
-                            <th id="th" scope="col" style="color: #DF1D0B;">Total Death</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td id="conf" class="td" style="color: rgb(223, 11, 205);"></td>
-                            <td id="recover" class="td" style="color: #15BA00;"></td>
-                            <td id="dec" class="td" style="color: #DF1D0B;"></td>
-                        </tr>
-                    </tbody> --}}
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="card border-warning" style="border-width:3px;">
-                                    <div class="card-body" style="">
-                                        <h5 class="card-title th" style="color: #FFC107;">Total Confirmed</h5>
-                                        <p id="conf" class="card-text td" style="color:#FFC107;"></p>
-                                    </div>
-                                </div>               
-                            </td>
-                            <td>
-                                <div class="card border-success" style="border-width:3px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title th" style="color: #28A745;">Total Recovered</h5>
-                                        <p id="recover" class="card-text td" style="color: #27A243;"></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="card border-danger" style="border-width:3px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title th" style="color: #D53343;">Total Death</h5>
-                                        <p id="dec" class="card-text td" style="color:#DC3545;"></p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>          
-                    </tbody>
-                </table>
-                {{!-- <ul>
-                    <li class="">Panic</li>
-                    <li class="">stay@Home</li>
-                </ul> --}}
+    <div class="container" style="margin-top: 25px;">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card border-warning shadow p-3 mb-5 bg-white rounded" style="border-width:2px;">
+                    <div class="card-body" style="">
+                        <h5 class="card-title th text-center font-weight-bold" style="color: #FFC107;">Total Confirmed</h5>
+                        <p id="conf" class="card-text td text-center" style="color:#FFC107;"></p>
+                    </div>
+                </div>
+            </div>
+            {{!-- <div class="col-md-2">
+
+            </div> --}}
+            <div class="col-md-4">
+                <div class="card border-success shadow p-3 mb-5 bg-white rounded" style="border-width:2px;">
+                    <div class="card-body">
+                        <h5 class="card-title th text-center font-weight-bold" style="color: #28A745;">Total Recovered</h5>
+                        <p id="recover" class="card-text td text-center" style="color: #27A243;"></p>
+                    </div>
+                </div>
+            </div>
+            {{!-- <div class="col-md-2">
+
+            </div> --}}
+            <div class="col-md-4">
+                <div class="card border-danger shadow p-3 mb-5 bg-white rounded" style="border-width:2px;">
+                    <div class="card-body">
+                        <h5 class="card-title th text-center font-weight-bold" style="color: #D53343;">Total Death</h5>
+                        <p id="dec" class="card-text td text-center" style="color:#DC3545;"></p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card card col-mb-3 shadow-lg">
+    </div>
+    <div class="container line-1" style="margin-top: 0px;">
+        <div class="card card col-mb-3 shadow p-3 mb-5 bg-white rounded">
             <div class="card-body">
                 <canvas id="line1"></canvas>
             </div>
         </div>
-        <div class="card-deck">
-            <div id="card-id" class="card col-sm-6 shadow-lg">
-                <div class="card-body">
-                    <canvas id="line2"></canvas>
+    </div>
+    <div class="container"style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="card-id" class="card shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                        <canvas id="line2"></canvas>
+                    </div>
                 </div>
             </div>
-            <div id="card-id" class="card col-sm-6 shadow-lg">
-                <div class="card-body">
-                    <canvas id="line3"></canvas>
+
+            <div class="col-md-6">
+                <div id="card-id" class="card shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                        <canvas id="line3"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="card-id" class="card col-mb-3 shadow-lg">
+    </div>
+    <div class="container" style="margin-top: 0px;">
+        <div id="card-id" class="card shadow p-3 mb-5 bg-white rounded">
             <div class="card-body">
                 <canvas id="bar1"></canvas>
             </div>
         </div>
     </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="/js/app.js"></script>
-    <!--<script>
-        const x=[{{dailyconfirmed}}]
-        console.log(x.toString)
-    </script>-->
 </body>
-
-</html>

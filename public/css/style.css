@@ -24,3 +24,10 @@ canvas{
     font-weight: bolder;
     font-family: monospace;
 }
+.cont{
+    border-width: 3px;
+    border-color: blueviolet;
+}
+.line1{
+    margin-top: 100px;
+}

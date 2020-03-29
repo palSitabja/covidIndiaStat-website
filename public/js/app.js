@@ -10,7 +10,7 @@ fetch(url).then((response)=>{
                 labels:data[0][6],
                 datasets:[{
                     label:'Daily Confirmed',
-                    backgroundColor:'#BA5200',
+                    backgroundColor:'#FDF3BB',
                     borderColor:'#BA5200',
                     data:data[0][0],
                     fill:true
@@ -24,6 +24,18 @@ fetch(url).then((response)=>{
                 }]
             },
             options:{
+                scales:{
+                    xAxes:[{
+                        gridLines:{
+                            drawOnChartArea:false
+                        }
+                    }],
+                    yAxes:[{
+                        gridLines:{
+                            drawOnChartArea:false
+                        }
+                    }],
+                },
                 responsive: true,
                 maintainAspectRatio: false,
                 title: {
@@ -48,7 +60,7 @@ fetch(url).then((response)=>{
                 labels:data[0][6],
                 datasets:[{
                     label:'Daily Deceased',
-                    backgroundColor:'#E81E51',
+                    backgroundColor:'#FDBBCA',
                     borderColor:'#E81E51',
                     data:data[0][1],
                     fill:true
@@ -62,6 +74,18 @@ fetch(url).then((response)=>{
                 }]
             },
             options:{
+                scales:{
+                    xAxes:[{
+                        gridLines:{
+                            drawOnChartArea:false
+                        }
+                    }],
+                    yAxes:[{
+                        gridLines:{
+                            drawOnChartArea:false
+                        }
+                    }],
+                },
                 responsive: true,
                 maintainAspectRatio: false,
                 title: {
@@ -88,7 +112,7 @@ fetch(url).then((response)=>{
                 labels:data[0][6],
                 datasets:[{
                     label:'Daily Recovered',
-                    backgroundColor:'#31a354',
+                    backgroundColor:'#BBFDC7',
                     borderColor:'#31a354',
                     data:data[0][2],
                     fill:true
@@ -102,6 +126,18 @@ fetch(url).then((response)=>{
                 }]
             },
             options:{
+                scales:{
+                    xAxes:[{
+                        gridLines:{
+                            drawOnChartArea:false
+                        }
+                    }],
+                    yAxes:[{
+                        gridLines:{
+                            drawOnChartArea:false
+                        }
+                    }],
+                },
                 responsive: true,
                 maintainAspectRatio: false,
                 title: {
@@ -165,9 +201,15 @@ fetch(url).then((response)=>{
                 },
                 scales: {
                     xAxes: [{
+                        gridLines:{
+                            drawOnChartArea:false
+                        },
                         stacked: true,
                     }],
                     yAxes: [{
+                        gridLines:{
+                            drawOnChartArea:false
+                        },
                         stacked: true
                     }]
                 }
@@ -175,8 +217,8 @@ fetch(url).then((response)=>{
         })
         //console.log(parseInt(data[2][1]))
         //console.log(parseInt(data[1][1][0]))
-        document.getElementById("conf").innerHTML=parseInt(data[2][0])+parseInt(data[1][1][0])
-        document.getElementById("recover").innerHTML=parseInt(data[2][2])+parseInt(data[1][4][0])
-        document.getElementById("dec").innerHTML=parseInt(data[2][1])+parseInt(data[1][2][0])
+        document.getElementById("conf").innerHTML=parseInt(data[1][1][0])//+parseInt(data[2][0])+
+        document.getElementById("recover").innerHTML=parseInt(data[1][4][0])//+parseInt(data[2][2])
+        document.getElementById("dec").innerHTML=parseInt(data[1][2][0])//+parseInt(data[2][1])
     })
 })

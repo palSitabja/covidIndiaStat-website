@@ -63,3 +63,41 @@ canvas{
     font-weight: bolder;
     font-family:cursive
 }
+.chart-container{
+    height: 215px;
+}
+.bar-container{
+    height:350px;
+}
+.line-color-1{
+    background-color: #FFFEF2;
+}
+.line-color-2{
+    background-color: #FFF2F2;
+    
+}
+.line-color-3{
+    background-color: #F2FFFD;
+
+}
+.bar-color-1{
+    background-color: #F2FFFF;
+}
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.footer-icon{
+    margin-top: 30px;
+    margin-left: 10px;
+    
+}

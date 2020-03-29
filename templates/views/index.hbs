@@ -3,68 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <title>CovidIndia-Stats</title>
 </head>
 
 <body>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  	  <div class="modal-dialog" role="document">
-  	    <div class="modal-content">
-  	      <div class="modal-header">
-  	        <h5 class="modal-title" id="exampleModalLabel">About</h5>
-  	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  	          <span aria-hidden="true">&times;</span>
-  	        </button>
-  	      </div>
-  	      <div class="modal-body text-center">
-            <img class="mx-auto rounded-circle shadow-lg" style="width:80px;" src="/image/dp.jpg" alt="Card image cap">
-  	        <br></br><p class="shadow-lg">Created by: <b style="font-family: 'Satisfy', cursive; font-size: 20px;">Sitabja Pal</b>
-  	        <h5>Contact:</h5><a href="sitabjapal03@gmail.com" target="_blank">sitabjapal03@gmail.com</a><br></br><a href="https://www.linkedin.com/in/sitabja-p-702019b5/" target="_blank">https://www.linkedin.com/in/sitabja-p-702019b5/</a><br></br>
-  	        <h5>Data Source: </h5><a href="https://api.covid19india.org/data.json" target="_blank">https://api.covid19india.org/data.json</a><br></br>
-  	      </div>
-  	      <div class="modal-footer">
-  	        <button type="button" class="btn btn-secondary shadow-lg" data-dismiss="modal">Close</button>
-  	      </div>
-  	    </div>
-  	  </div>
-  	</div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#" style="font-family: monospace;font-size:x-large;">
-            <img class="mr-3" src="/image/virus.webp" width="70" height="30" class="d-inline-block align-top" alt="">
-            CovidIndia-Stats
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    {{>header}}
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
-                <li class="nav-item dropdown">
 
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
-                </li>
-            </ul>
-            <div class="form-inline my-2 my-lg-0">
-                <a href="https://github.com/palSitabja/covidIndiaStat-website" target="_blank" class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button" style="color: "#F8F9FA";">GitHub</a>
-                <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">About</button>
-                <!-- Button trigger modal -->
-            </div>
-        </div>
-    </nav>
+
     <div class="container" style="margin-top: 25px;">
         <div class="row">
-            <div class="col-4 div-conf" >
+            <div class="col-4 div-conf">
                 <h6 class="text-center text-uppercase h6-1" style="">Confirmed</h6>
                 <p id="conf" class="text-center p-update" style="color:#FFC107;"></p>
             </div>
@@ -78,38 +30,42 @@
             </div>
         </div>
     </div>
-    <div class="container line-1" style="margin-top: 25px;">
-        <div class="card card col-mb-3 shadow-sm p-3 mb-5 bg-white rounded">
-            <div class="card-body">
-                <canvas id="line1"></canvas>
-            </div>
-        </div>
+    <div class="container line-1 chart-container line-color-1" style="margin-top: 25px;">
+
+        <canvas id="line1"></canvas>
+
     </div>
-    <div class="container"style="margin-top: 50px;">
+    <div class="container" style="margin-top: 50px;">
         <div class="row">
-            <div class="col-md-6">
-                <div id="card-id" class="card shadow-sm p-3 mb-5 bg-white rounded">
-                    <div class="card-body">
-                        <canvas id="line2"></canvas>
-                    </div>
-                </div>
+            <div class="col-md-6 chart-container" style="padding-left: 0;">
+
+                <canvas id="line2" class="line-color-2"></canvas>
+
             </div>
 
-            <div class="col-md-6">
-                <div id="card-id" class="card shadow-sm p-3 mb-5 bg-white rounded">
-                    <div class="card-body">
-                        <canvas id="line3"></canvas>
-                    </div>
-                </div>
+            <div class="col-md-6 chart-container" style="padding-right: 0;">
+
+                <canvas id="line3" class="line-color-3"></canvas>
+
             </div>
         </div>
     </div>
-    <div class="container" style="margin-top: 0px;">
-        <div id="card-id" class="card shadow-sm p-3 mb-5 bg-white rounded">
-            <div class="card-body">
-                <canvas id="bar1"></canvas>
-            </div>
-        </div>
+    <div class="container bar-container bar-color-1" style="margin-top: 50px;margin-bottom: 25px;">
+
+        <canvas id="bar1"></canvas>
+
+    </div>
+    {{!--<div class="resp-container container" style="margin-top: 25px;">
+         <iframe class="resp-iframe"
+            src="https://docs.google.com/spreadsheets/u/0/d/e/2PACX-1vR30F8lYP3jG7YOq8es0PBpJIE5yvRVZffOyaqC0GgMBN6yt0Q-NI8pxS7hd1F9dYXnowSC6zpZmW9D/pubhtml/sheet?headers=false&amp;gid=0"
+            gesture="media" allow="encrypted-media" allowfullscreen></iframe> --}}
+    <div class="container">
+        <iframe id="pageswitcher-content" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"
+            src="https://docs.google.com/spreadsheets/u/0/d/e/2PACX-1vR30F8lYP3jG7YOq8es0PBpJIE5yvRVZffOyaqC0GgMBN6yt0Q-NI8pxS7hd1F9dYXnowSC6zpZmW9D/pubhtml/sheet?headers=false&amp;gid=0"
+            style="display: block; width: 100%; height: 800px;"></iframe>
+    </div>
+    {{>footer}}
+    {{!-- </div> --}}
     </div>
 
 

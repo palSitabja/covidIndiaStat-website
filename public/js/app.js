@@ -133,6 +133,9 @@ fetch(url).then((response)=>{
                         }
                     }],
                     yAxes:[{
+                        ticks: {
+                            stepSize: 20
+                         },
                         gridLines:{
                             drawOnChartArea:false
                         }

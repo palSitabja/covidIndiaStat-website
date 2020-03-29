@@ -46,6 +46,9 @@ app.get('',(req,res)=>{
             delta.push(response.body.key_values[0].recovereddelta)
             data.push(delta)
             //console.log(data)
+            
+
+
             res.render('index',{})
         }
     })

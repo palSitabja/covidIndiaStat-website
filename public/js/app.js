@@ -33,7 +33,10 @@ fetch(url).then((response)=>{
                     yAxes:[{
                         gridLines:{
                             drawOnChartArea:false
-                        }
+                        },
+                        ticks: {
+                            stepSize: 600
+                         },
                     }],
                 },
                 responsive: true,
@@ -44,7 +47,13 @@ fetch(url).then((response)=>{
                 },
                 tooltips: {
 					mode: 'index',
-					intersect: false,
+                    intersect: false,
+                    backgroundColor	:'rgba(255, 255, 255, 0.1)',
+                    titleFontColor:'#313440',
+                    bodyFontColor:'#313440',
+                    bodyFontStyle:'bold',
+                    borderColor: '#BA5200',
+                    borderWidth: 2,
 				},
 				hover: {
 					mode: 'nearest',
@@ -83,7 +92,10 @@ fetch(url).then((response)=>{
                     yAxes:[{
                         gridLines:{
                             drawOnChartArea:false
-                        }
+                        },
+                        ticks: {
+                            stepSize: 50
+                         },
                     }],
                 },
                 responsive: true,
@@ -94,7 +106,13 @@ fetch(url).then((response)=>{
                 },
                 tooltips: {
 					mode: 'index',
-					intersect: false,
+                    intersect: false,
+                    backgroundColor	:'rgba(255, 255, 255, 0.1)',
+                    titleFontColor:'#313440',
+                    bodyFontColor:'#313440',
+                    bodyFontStyle:'bold',
+                    borderColor: '#EC0D45',
+                    borderWidth: 2,
 				},
 				hover: {
 					mode: 'nearest',
@@ -134,7 +152,7 @@ fetch(url).then((response)=>{
                     }],
                     yAxes:[{
                         ticks: {
-                            stepSize: 20
+                            stepSize: 100
                          },
                         gridLines:{
                             drawOnChartArea:false
@@ -149,7 +167,13 @@ fetch(url).then((response)=>{
                 },
                 tooltips: {
 					mode: 'index',
-					intersect: false,
+                    intersect: false,
+                    backgroundColor	:'rgba(255, 255, 255, 0.1)',
+                    titleFontColor:'#313440',
+                    bodyFontColor:'#313440',
+                    bodyFontStyle:'bold',
+                    borderColor: '#36BB60',
+                    borderWidth: 2,
 				},
 				hover: {
 					mode: 'nearest',
@@ -196,7 +220,7 @@ fetch(url).then((response)=>{
                 },
                 tooltips: {
 					mode: 'index',
-					intersect: false,
+                    intersect: false,
 				},
 				hover: {
 					mode: 'nearest',

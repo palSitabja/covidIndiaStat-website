@@ -41,10 +41,10 @@ app.get('',(req,res)=>{
                 data[1][3].push(element1.state)
                 data[1][4].push(element1.recovered)
             })
-            delta.push(response.body.key_values[0].confirmeddelta)
+            /*delta.push(response.body.key_values[0].confirmeddelta)
             delta.push(response.body.key_values[0].deceaseddelta)
             delta.push(response.body.key_values[0].recovereddelta)
-            data.push(delta)
+            data.push(delta)*/
             //console.log(data)
             
 

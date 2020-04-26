@@ -34,9 +34,9 @@ fetch(url).then((response)=>{
                         gridLines:{
                             drawOnChartArea:false
                         },
-                        ticks: {
-                            stepSize: 600
-                         },
+                        // ticks: {
+                        //     stepSize: 10000
+                        //  },
                     }],
                 },
                 responsive: true,
@@ -94,7 +94,7 @@ fetch(url).then((response)=>{
                             drawOnChartArea:false
                         },
                         ticks: {
-                            stepSize: 50
+                            stepSize: 500
                          },
                     }],
                 },
@@ -151,9 +151,9 @@ fetch(url).then((response)=>{
                         }
                     }],
                     yAxes:[{
-                        ticks: {
-                            stepSize: 100
-                         },
+                        // ticks: {
+                        //     stepSize: 1000
+                        //  },
                         gridLines:{
                             drawOnChartArea:false
                         }
@@ -221,6 +221,12 @@ fetch(url).then((response)=>{
                 tooltips: {
 					mode: 'index',
                     intersect: false,
+                    backgroundColor	:'rgba(255, 255, 255, 0.1)',
+                    titleFontColor:'#313440',
+                    bodyFontColor:'#313440',
+                    bodyFontStyle:'bold',
+                    borderColor: '#2B8CBE',
+                    borderWidth: 2,
 				},
 				hover: {
 					mode: 'nearest',

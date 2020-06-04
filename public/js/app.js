@@ -94,7 +94,7 @@ fetch(url).then((response)=>{
                             drawOnChartArea:false
                         },
                         ticks: {
-                            stepSize: 500
+                            //stepSize: 500
                          },
                     }],
                 },

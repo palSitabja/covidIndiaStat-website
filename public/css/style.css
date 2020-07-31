@@ -281,6 +281,7 @@ background: radial-gradient(104.53% 158.57% at 1.83% 0%, #FF0000 0%, rgba(253, 1
     .data_chart_section{
         display: flex;
         flex-direction: column;
+        height: 100vh;
     }
     .info_card{
         height: 90%;
@@ -290,6 +291,9 @@ background: radial-gradient(104.53% 158.57% at 1.83% 0%, #FF0000 0%, rgba(253, 1
         height: 80px;
         width: 80px;
     }
+    /* .section1,.section2,.section3,.section4{
+        height: 250px;
+    } */
     #chart1, #chart2, #chart_death, #chart_ststeWise{
         width: 100%;
     }

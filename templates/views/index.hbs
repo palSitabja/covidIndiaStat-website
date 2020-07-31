@@ -3,83 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <title>CovidIndia-Stats</title>
 </head>
 
 <body>
-    {{>header}}
+    <header>
 
+        <div id="myModal" class="modal">
+            <div class="modal-content">
 
+                <div class="modal_header">
+                    <h3>About</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal_body">
+                    <img class="modal_img" src="/image/dp.jpg" alt="" srcset="">
+                    <h3 style="margin-bottom: 10px;">Created By: Sitabja Pal</h3>
+                    {{!-- <h3>Contact</h3> --}}
+                    <div class="icon_div">
+                        <a target="_blank" href="sitabjapal03@gmail.com" class="fa fa-google"></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/sitabja-p-702019b5/" class="fa fa-linkedin"></a>
+                        <a target="_blank" href="https://www.facebook.com/sitabja.pal" class="fa fa-facebook"></a>
+                    </div>
+                    <h3>Data Source:</h3>
+                    <a target="_blank" href="https://api.covid19india.org/data.json">api.covid19india.org/data.json</a>
 
-    <div class="container" style="margin-top: 25px;">
-        <div class="row">
-            <div class="col-4 div-conf">
-                <h6 class="text-center text-uppercase h6-1" style="">Confirmed</h6>
-                <p id="conf" class="text-center p-update" style="color:#FFC107;"></p>
-            </div>
-            <div class="col-4 div-rec">
-                <h6 class="text-center text-uppercase h6-2" style="">Recovered</h6>
-                <p id="recover" class="text-center p-update" style="color: #27A243;"></p>
-            </div>
-            <div class="col-4 div-dec">
-                <h6 class="text-center text-uppercase h6-3" style="">Deceased</h6>
-                <p id="dec" class="text-center p-update" style="color:#DC3545;"></p>
-            </div>
-        </div>
-    </div>
-    <div class="container line-1 chart-container line-color-1" style="margin-top: 25px;">
-
-        <canvas id="line1"></canvas>
-
-    </div>
-    <div class="container" style="margin-top: 50px;">
-        <div class="row">
-            <div class="col-md-6 chart-container" style="padding-left: 0;">
-
-                <canvas id="line2" class="line-color-2"></canvas>
-
-            </div>
-
-            <div class="col-md-6 chart-container" style="padding-right: 0;">
-
-                <canvas id="line3" class="line-color-3"></canvas>
-
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container bar-container bar-color-1" style="margin-top: 50px;margin-bottom: 25px;">
 
-        <canvas id="bar1"></canvas>
+        <div class="logo">
+            <img class="brand_logo" src="/image/virus.svg" alt="" srcset="">
+            <h3>CovidIndia-Stats</h3>
+        </div>
+        <ul id="sidebar">
+            <button id="about_btn" class="nav_btn about_btn">
+                <li class="nav-link"><a class="about_li" href="">About</a></li>
+            </button>
+            <button class="nav_btn git_btn">
+                <li class="nav-link"><a target="_blank" class="git_li" href="https://github.com/palSitabja/covidIndiaStat-website">GitHub</a></li>
+            </button>
+        </ul>
+    </header>
+    <div class="details">
+        <div class="confirm info_card">
+            <img class="confirm_img" src="/image/confirm1.svg" alt="" srcset="">
+            <h4 style="color: #1579c5;font-weight: bold;">Confirmed</h4>
+            <h4 style="color: #1579c5;"> 50000</h4>
+        </div>
+        <div class="recover info_card">
+            <img class="confirm_img" src="/image/recovered.svg" alt="" srcset="">
+            <h4 style="color: #21891D;font-weight: bold">Recovered</h4>
+            <h4 style="color: #21891D;">50000</h4>
+        </div>
+        <div class="death info_card">
+            <img class="confirm_img" src="/image/death1.svg" alt="" srcset="">
+            <h4 style="color: #FF0000;font-weight: bold">Deceases</h4>
+            <h4 style="color: #FF0000;">50000</h4>
+        </div>
 
     </div>
-    {{!--<div class="resp-container container" style="margin-top: 25px;">
-         <iframe class="resp-iframe"
-            src="https://docs.google.com/spreadsheets/u/0/d/e/2PACX-1vR30F8lYP3jG7YOq8es0PBpJIE5yvRVZffOyaqC0GgMBN6yt0Q-NI8pxS7hd1F9dYXnowSC6zpZmW9D/pubhtml/sheet?headers=false&amp;gid=0"
-            gesture="media" allow="encrypted-media" allowfullscreen></iframe> --}}
+    <div class="data_chart_section">
+        <div class="section1">
+            <div id="chart1"></div>
+        </div>
+        <div class="section2">
+            <div id="chart2"></div>
+        </div>
+        <div class="section3">
+            <div id="chart_death"></div>
+        </div>
+    </div>
+    <div class="section4">
+        <div id="chart_ststeWise"></div>
+    </div>
     <div class="container">
         <iframe id="pageswitcher-content" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"
             src="https://docs.google.com/spreadsheets/u/0/d/e/2PACX-1vR30F8lYP3jG7YOq8es0PBpJIE5yvRVZffOyaqC0GgMBN6yt0Q-NI8pxS7hd1F9dYXnowSC6zpZmW9D/pubhtml/sheet?headers=false&amp;gid=0"
             style="display: block; width: 100%; height: 800px;"></iframe>
     </div>
-    {{>footer}}
-    {{!-- </div> --}}
-    </div>
+    <div class="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="/js/app.js"></script>
+
 </body>
+
+</html>

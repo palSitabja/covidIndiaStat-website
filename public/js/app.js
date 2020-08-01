@@ -252,6 +252,10 @@ fetch(url).then((response)=>{
             opacity: 0.8
           }
           };
+
+        document.getElementById("conf").innerHTML=parseInt(data[1][1][0])//+parseInt(data[2][0])+
+        document.getElementById("recover").innerHTML=parseInt(data[1][4][0])//+parseInt(data[2][2])
+        document.getElementById("dec").innerHTML=parseInt(data[1][2][0])//+parseInt(data[2][1])
         var chart_daily = new ApexCharts(document.querySelector("#chart1"), options_daily);
         var chart_total = new ApexCharts(document.querySelector("#chart2"), options_total);
         var chart_stateWise = new ApexCharts(document.querySelector("#chart_ststeWise"), options_stateWise);
@@ -262,25 +266,5 @@ fetch(url).then((response)=>{
         chart_death.render();
     })
 })
-// function toogleModal(event) {
-//   var modal = document.getElementById("myModal");
-//   var span = document.getElementsByClassName("close")[0];
-//   modal.style.display = "block";
-//   // event.preventDefault();
-// }
-var modal = document.getElementById("myModal");
-document.getElementById("about_btn").addEventListener("click", function(event){
-  
-  
-  modal.style.display = "block";
-  event.preventDefault()
-});
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+
+

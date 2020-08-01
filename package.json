@@ -4,14 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node src/app.js"
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "hbs": "^4.1.0",
     "request": "^2.88.2"

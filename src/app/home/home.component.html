@@ -1,0 +1,94 @@
+<div *ngIf="dailyconfirmed.length>0" class="row d-flex justify-content-around">
+    <div class="col-md-3 col-sm-10 mb-3">
+      <mat-card style="padding: 6px; height: 10vh;">
+        <div class="row no-gutters">
+          <div style="background-color: #2196f3;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+            <mat-icon class="mat-icons">verified_user</mat-icon>
+          </div>
+          <div class="col-8">
+            <h2 style="margin: 0px;color: #2196f3;">Total Confirmed</h2>
+            <h3 style="margin: 0px;color: #2196f3;font-weight: bolder;letter-spacing: 2px;">{{total_confirmed}}</h3>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  
+    <div class="col-md-3 col-sm-10 mb-3">
+      <mat-card style="padding: 6px; height: 10vh;">
+        <div class="row no-gutters">
+          <div style="background-color: #FCC006;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+            <mat-icon class="mat-icons">add_task</mat-icon>
+          </div>
+          <div class="col-8">
+            <h2 style="margin: 0px;color: #FCC006;">Total Active</h2>
+            <h3 style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{total_active}}</h3>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  
+    <div class="col-md-3 col-sm-10 mb-3">
+      <mat-card style="padding: 6px; height: 10vh;">
+        <div class="row no-gutters">
+          <div style="background-color: #26A544;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+            <mat-icon class="mat-icons">emoji_people</mat-icon>
+          </div>
+          <div class="col-8">
+            <h2 style="margin: 0px;color: #26A544;">Total Recovered</h2>
+            <h3 style="color: #26A544;font-weight: bolder;margin:0px;letter-spacing: 2px;">{{total_recovered}}</h3>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  
+    <div class="col-md-3 col-sm-10 mb-3">
+      <mat-card style="padding: 6px;height: 10vh;">
+        <div class="row no-gutters">
+          <div style="background-color: #DA3442;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+            <mat-icon class="mat-icons">sentiment_dissatisfied</mat-icon>
+          </div>
+          <div class="col-8">
+            <h2 style="margin: 0px;color: #DA3442;">Total Deceased</h2>
+            <h3 style="color: #DA3442;font-weight: bolder;margin: 0px;letter-spacing: 2px;">{{total_deaths}}</h3>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="container">
+    
+  </div>
+  <div class="row d-flex justify-content-around mt-md-5 mt-sm-2 p-2">
+    <div class="col-md-6 col-sm-6 mb-3">
+      <mat-card>
+        <apx-chart
+      [series]="chartDailyConfirm.series"
+      [chart]="chartDailyConfirm.chart"
+      [xaxis]="chartDailyConfirm.xaxis"
+      [title]="chartDailyConfirm.title"
+      [grid]="chartDailyConfirm.grid"
+      [dataLabels]="chartDailyConfirm.dataLabels"
+      [stroke]="chartDailyConfirm.stroke"
+      [colors]="color1"
+      [yaxis]="chartDailyConfirm.yaxis"
+    ></apx-chart>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-sm-6 mb-3">
+      <mat-card>
+        <apx-chart
+      [series]="chartDailyDeath.series"
+      [chart]="chartDailyDeath.chart"
+      [xaxis]="chartDailyDeath.xaxis"
+      [title]="chartDailyDeath.title"
+      [grid]="chartDailyDeath.grid"
+      [dataLabels]="chartDailyConfirm.dataLabels"
+      [stroke]="chartDailyConfirm.stroke"
+      [theme]="chartDailyConfirm.theme"
+      [colors]="color2"
+      [yaxis]="chartDailyConfirm.yaxis"
+    ></apx-chart>
+      </mat-card>
+    </div>
+  </div>
+  

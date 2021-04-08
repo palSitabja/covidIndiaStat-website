@@ -1,0 +1,42 @@
+<nav style="background-color: #3E50B3;color: white;" class="navbar navbar-expand-lg mb-3 d-flex align-items-center">
+  <div class="container-fluid">
+    <mat-icon>coronavirus</mat-icon>
+    <a style="text-decoration: none;color: white;" class="navbar-brand ml-1 ml-sm-2" href="#">CovidIndia-Stats</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <mat-icon style="color: white;">menu</mat-icon>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon mr-2" aria-label="Example icon-button with menu icon">
+            <a [routerLink]='["/state"]' style="text-decoration: none;color: white">statewise</a>
+          </button>
+          
+          <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon" aria-label="Example icon-button with menu icon">
+            <a href="https://github.com/palSitabja/covidIndiaStat-website" style="text-decoration: none;color: white">GitHub</a>
+          </button>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- <p class="mb-3">
+  <mat-toolbar style="background-color: #3E50B3;color: white;">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>coronavirus</mat-icon>
+    </button>
+    <span>CovidIndia-Stats</span>
+    <span class="example-spacer"></span>
+    <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon" aria-label="Example icon-button with menu icon">
+      <a [routerLink]='["/state"]' style="text-decoration: none;color: white">statewise</a>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+</p> -->
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+

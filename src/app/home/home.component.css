@@ -1,0 +1,16 @@
+
+
+  .card-img{
+      height: 100%;
+  }
+.mat-card{
+    padding: 1px;
+}
+  .top-card-col{
+      height: 10vh;
+  }
+
+  .mat-icons{
+    color: white;
+    transform: scale(1.5);
+  }

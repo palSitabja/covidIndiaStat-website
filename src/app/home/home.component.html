@@ -1,3 +1,8 @@
+<div style="margin-top: 10vh;" *ngIf="dailyconfirmed.length===0" class="d-flex justify-content-center align-items-center">
+  <div style="width: 6rem; height: 6rem;margin-top: 20vh;" class="spinner-border text-light" role="status">
+  </div>
+  <!-- <span style="color: white;margin-top: 40vh;font-size: x-large;" class="visually-hidden">Loading...</span> -->
+</div>
 <div *ngIf="dailyconfirmed.length>0" class="row d-flex justify-content-around">
     <div class="col-md-3 col-sm-10 mb-3">
       <mat-card style="padding: 6px; height: 10vh;">
@@ -58,7 +63,7 @@
   <div class="container">
     
   </div>
-  <div class="row d-flex justify-content-around mt-md-5 mt-sm-2 p-2">
+  <div  *ngIf="dailyconfirmed.length>0" class="row d-flex justify-content-around mt-md-5 mt-sm-2 p-2">
     <div class="col-md-6 col-sm-6 mb-3">
       <mat-card>
         <apx-chart
@@ -70,7 +75,6 @@
       [dataLabels]="chartDailyConfirm.dataLabels"
       [stroke]="chartDailyConfirm.stroke"
       [colors]="color1"
-      [yaxis]="chartDailyConfirm.yaxis"
     ></apx-chart>
       </mat-card>
     </div>

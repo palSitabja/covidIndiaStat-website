@@ -57,6 +57,16 @@ export class StatewiseDataComponent implements OnInit {
           data: this.statewisedeaths
         },
       ],
+      title: {
+        text: "State Wise Cases",
+        align: "center",
+        style: {
+          fontSize:  '14px',
+          fontWeight:  'bold',
+          fontFamily:  undefined,
+          color: '#26A544'
+        },
+      },
       chart: {
         type: "bar",
         height: 1600,
@@ -73,9 +83,6 @@ export class StatewiseDataComponent implements OnInit {
       stroke: {
         width: 1,
         //colors: ["#fff"]
-      },
-      title: {
-        text: "State Wise Cases"
       },
       grid:{
         show: false,
@@ -124,7 +131,14 @@ export class StatewiseDataComponent implements OnInit {
       this.statewisedeaths.push(element.deaths)
       this.statewiselastupdatedtime.push(element.lastupdatedtime)
       this.statewiserecovered.push(element.recovered)
-      this.state.push(element.state)
+      if (element.state==="Jammu and Kashmir") {
+        this.state.push("J&K")
+      } else if (element.state==="Andaman and Nicobar Islands")  {
+        this.state.push("Andaman")
+      }else if (element.state==="Dadra and Nagar Haveli and Daman and Diu")  {
+        this.state.push("Daman_Diu")
+      }
+      else this.state.push(element.state)
     });
   }
 }

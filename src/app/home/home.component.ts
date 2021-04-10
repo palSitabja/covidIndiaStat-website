@@ -1,5 +1,6 @@
 import { EventEmitter, Output, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MatToolbar } from '@angular/material/toolbar';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -72,9 +73,22 @@ export class HomeComponent implements OnInit {
           data: this.dailyrecovered
         }
       ],
+      title: {
+        text: "Daily Recovery & Daily Confirmed",
+        align: "center",
+        style: {
+          fontSize:  '14px',
+          fontWeight:  'bold',
+          fontFamily:  undefined,
+          color:  '#3E50B3'
+        },
+      },
       chart: {
         height: 270,
-        type: "area"
+        type: "area",
+        toolbar: {
+          show: false,
+        }
       },
       grid:{
         show: false,
@@ -109,9 +123,22 @@ export class HomeComponent implements OnInit {
           data: this.dailydeceased
         }
       ],
+      title: {
+        text: "Daily Deceased",
+        align: "center",
+        style: {
+          fontSize:  '14px',
+          fontWeight:  'bold',
+          fontFamily:  undefined,
+          color: '#DA3442'
+        },
+      },
       chart: {
         height: 270,
-        type: "area"
+        type: "area",
+        toolbar: {
+          show: false,
+        }
       },
       grid:{
         show: false,

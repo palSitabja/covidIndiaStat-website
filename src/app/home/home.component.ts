@@ -47,12 +47,6 @@ export class HomeComponent implements OnInit {
   dailydeceased:any[]=[];
   dailyrecovered:any[]=[];
   date:any[]=[];
-  // statewiseactive:any[]=[]
-  // statewiseconfirmed:any[]=[]
-  // statewisedeaths:any[]=[]
-  // statewiselastupdatedtime:any[]=[]
-  // statewiserecovered:any[]=[]
-  // state:any[]=[]
   total_confirmed:number=0
   total_deaths:number=0
   total_active:number=0
@@ -178,21 +172,7 @@ export class HomeComponent implements OnInit {
           this.date.push(element.date)
           //console.log(this.dailyconfirmed);
         });
-        localStorage.setItem('statewise',JSON.stringify(this.data.statewise))
-        // this.data.statewise.forEach(element => {
-        //   this.statewiseactive.push(element.active)
-        //   this.statewiseconfirmed.push(element.confirmed)
-        //   this.statewisedeaths.push(element.deaths)
-        //   this.statewiselastupdatedtime.push(element.lastupdatedtime)
-        //   this.statewiserecovered.push(element.recovered)
-        //   this.state.push(element.state)
-        //   this.total_active=this.statewiseactive[0]
-        //   this.total_confirmed=this.statewiseconfirmed[0]
-        //   this.total_deaths=this.statewisedeaths[0]
-        //   this.total_recovered=this.statewiserecovered[0]
-        // });
-        //console.log(this.statewiseactive[100]);
-        
+        localStorage.setItem('statewise',JSON.stringify(this.data.statewise))        
         this.total_active=this.data.statewise[0].active
         this.total_confirmed=this.data.statewise[0].confirmed
         this.total_deaths=this.data.statewise[0].deaths

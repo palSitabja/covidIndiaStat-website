@@ -1,6 +1,6 @@
 import { EventEmitter, Output, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { MatToolbar } from '@angular/material/toolbar';
+
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -43,6 +43,10 @@ export class HomeComponent implements OnInit {
   title = 'covidIndiaStat-website';
   data:any=null;
   errorMsg:string="";
+  today_confirmed=0;
+  today_active=0;
+  today_recovered=0;
+  today_deaths=0;
   dailyconfirmed:any[]=[];
   dailydeceased:any[]=[];
   dailyrecovered:any[]=[];
@@ -62,7 +66,7 @@ export class HomeComponent implements OnInit {
           data: this.dailyconfirmed
         },
         {
-          type:"line",
+          type:"area",
           name: "Daily Recovery",
           data: this.dailyrecovered
         }
@@ -70,6 +74,7 @@ export class HomeComponent implements OnInit {
       title: {
         text: "Daily Recovery & Daily Confirmed",
         align: "center",
+        offsetY: 10,
         style: {
           fontSize:  '14px',
           fontWeight:  'bold',
@@ -120,6 +125,7 @@ export class HomeComponent implements OnInit {
       title: {
         text: "Daily Deceased",
         align: "center",
+        offsetY: 10,
         style: {
           fontSize:  '14px',
           fontWeight:  'bold',
@@ -172,7 +178,8 @@ export class HomeComponent implements OnInit {
           this.date.push(element.date)
           //console.log(this.dailyconfirmed);
         });
-        localStorage.setItem('statewise',JSON.stringify(this.data.statewise))        
+        localStorage.setItem('statewise',JSON.stringify(this.data.statewise))
+        
         this.total_active=this.data.statewise[0].active
         this.total_confirmed=this.data.statewise[0].confirmed
         this.total_deaths=this.data.statewise[0].deaths

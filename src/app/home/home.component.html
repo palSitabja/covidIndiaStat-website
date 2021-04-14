@@ -1,60 +1,97 @@
 <div style="margin-top: 10vh;" *ngIf="dailyconfirmed.length===0" class="d-flex justify-content-center align-items-center">
   <div style="width: 6rem; height: 6rem;margin-top: 20vh;" class="spinner-border text-light" role="status">
   </div>
-  <!-- <span style="color: white;margin-top: 40vh;font-size: x-large;" class="visually-hidden">Loading...</span> -->
 </div>
 <div *ngIf="dailyconfirmed.length>0" class="row d-flex justify-content-around">
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px; height: 10vh;">
+      <mat-card style="padding: 6px; height: 14vh;">
         <div class="row no-gutters">
-          <div style="background-color: #2196f3;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+          <div style="background-color: #2196f3;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 confirmed-shadow">
             <mat-icon class="mat-icons">verified_user</mat-icon>
           </div>
           <div class="col-8">
-            <h2 style="margin: 0px;color: #2196f3;">Total Confirmed</h2>
-            <h3 style="margin: 0px;color: #2196f3;font-weight: bolder;letter-spacing: 2px;">{{total_confirmed}}</h3>
+            <h2 style="margin: 0px;color: #2196f3;"class="text-center">Confirmed</h2>
+            <div class="row no-gutters">
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #2196f3">Total</h4>
+                <h3 class="text-center" style="margin: 0px;color: #2196f3;font-weight: bolder;letter-spacing: 2px;">{{total_confirmed}}</h3>  
+              </div>
+              
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #2196f3">Today</h4>
+                <h3 class="text-center" style="margin: 0px;color: #2196f3;font-weight: bolder;letter-spacing: 2px;">{{this.dailyconfirmed[this.dailyconfirmed.length-1]}}</h3>
+              </div>
+            </div>
           </div>
         </div>
       </mat-card>
     </div>
   
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px; height: 10vh;">
+      <mat-card style="padding: 6px; height: 14vh;">
         <div class="row no-gutters">
-          <div style="background-color: #FCC006;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+          <div style="background-color: #FCC006;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 active-shadow">
             <mat-icon class="mat-icons">add_task</mat-icon>
           </div>
           <div class="col-8">
-            <h2 style="margin: 0px;color: #FCC006;">Total Active</h2>
-            <h3 style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{total_active}}</h3>
+            <h2 style="margin: 0px;color: #FCC006;" class="text-center">Total Active</h2>
+            <div class="row no-gutters">
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #FCC006;">Total</h4>
+                <h3 class="text-center" style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{total_active}}</h3>  
+              </div>
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #FCC006;">Today</h4>
+                <h3 class="text-center" style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{"No Data"}}</h3>
+              </div>
+            </div>
           </div>
         </div>
       </mat-card>
     </div>
   
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px; height: 10vh;">
+      <mat-card style="padding: 6px; height: 14vh;">
         <div class="row no-gutters">
-          <div style="background-color: #26A544;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+          <div style="background-color: #26A544;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 recovery-shadow">
             <mat-icon class="mat-icons">emoji_people</mat-icon>
           </div>
           <div class="col-8">
-            <h2 style="margin: 0px;color: #26A544;">Total Recovered</h2>
-            <h3 style="color: #26A544;font-weight: bolder;margin:0px;letter-spacing: 2px;">{{total_recovered}}</h3>
+            <h2 style="margin: 0px;color: #26A544;" class="text-center">Recovered</h2>
+            <div class="row no-gutters">
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #26A544;">Total</h4>
+                <h3 class="text-center" style="margin: 0px;color: #26A544;font-weight: bolder;letter-spacing: 2px;">{{total_recovered}}</h3>  
+              </div>
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #26A544;">Today</h4>
+                <h3 class="text-center" style="margin: 0px;color: #26A544;font-weight: bolder;letter-spacing: 2px;">{{this.dailyrecovered[this.dailyrecovered.length-1]}}</h3>
+              </div>
+            </div>
           </div>
         </div>
       </mat-card>
     </div>
   
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px;height: 10vh;">
+      <mat-card style="padding: 6px;height: 14vh;">
         <div class="row no-gutters">
-          <div style="background-color: #DA3442;padding: 0px;height: 8.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-2">
+          <div style="background-color: #DA3442;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 death-shadow">
             <mat-icon class="mat-icons">sentiment_dissatisfied</mat-icon>
           </div>
           <div class="col-8">
-            <h2 style="margin: 0px;color: #DA3442;">Total Deceased</h2>
-            <h3 style="color: #DA3442;font-weight: bolder;margin: 0px;letter-spacing: 2px;">{{total_deaths}}</h3>
+            <h2 style="margin: 0px;color: #DA3442;" class="text-center">Deceased</h2>
+            <div class="row no-gutters">
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #DA3442;">Total</h4>
+                <h3 class="text-center" style="margin: 0px;color: #DA3442;font-weight: bolder;letter-spacing: 2px;">{{total_deaths}}</h3>  
+              </div>
+              
+              <div class="col shadow-sm">
+                <h4 class="text-center" style="margin: 0px;color: #DA3442;">Today</h4>
+                <h3 class="text-center" style="margin: 0px;color: #DA3442;font-weight: bolder;letter-spacing: 2px;">{{this.dailydeceased[this.dailydeceased.length-1]}}</h3>
+              </div>
+            </div>
           </div>
         </div>
       </mat-card>

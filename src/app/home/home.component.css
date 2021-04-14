@@ -12,5 +12,26 @@
 
   .mat-icons{
     color: white;
-    transform: scale(1.5);
+    transform: scale(2.2);
   }
+  .confirmed-shadow{
+    -webkit-box-shadow: 0px 0px 5px 0px #2196f3;
+    -moz-box-shadow: 0px 0px 5px 0px #2196f3;
+    box-shadow: 0px 0px 5px 0px #2196f3;
+
+  }
+  .active-shadow{
+    -webkit-box-shadow: 0px 0px 5px 0px #FCC006;
+    -moz-box-shadow: 0px 0px 5px 0px #FCC006;
+    box-shadow: 0px 0px 5px 0px #FCC006;
+}
+.death-shadow{
+  -webkit-box-shadow: 0px 0px 5px 0px #DA3442;
+  -moz-box-shadow: 0px 0px 5px 0px #DA3442;
+  box-shadow: 0px 0px 5px 0px #DA3442;
+}
+.recovery-shadow{
+  -webkit-box-shadow: 0px 0px 5px 0px #26A544;
+  -moz-box-shadow: 0px 0px 5px 0px #26A544;
+  box-shadow: 0px 0px 5px 0px #26A544;
+}

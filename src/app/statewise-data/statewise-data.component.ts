@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Time } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -37,6 +38,7 @@ export class StatewiseDataComponent implements OnInit {
   // @Input()
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
+  stateValue:string;
   statewise:any[];
   statewiseactive:any[]=[]
   statewiseconfirmed:any[]=[]
@@ -44,7 +46,16 @@ export class StatewiseDataComponent implements OnInit {
   statewiselastupdatedtime:any[]=[]
   statewiserecovered:any[]=[]
   state:any[]=[]
-  color1:["#DA3442","#2196F3"]
+  active:number;
+  confirmed:number;
+  deaths:number;
+  recovered:number;
+  delConfirmed:number;
+  delDeaths:number;
+  delRecovered:number;
+  lastUpdate:Time
+  color1:["#DA3442","#2196F3"];
+  upArrow="&#8593"
   constructor() {
     this.chartOptions = {
       series: [
@@ -118,13 +129,13 @@ export class StatewiseDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.statewise=JSON.parse(localStorage.getItem('statewise'))
-    console.log(this.statewise);
+    //console.log(this.statewise);
     this.dataPreprocess()
   }
   dataPreprocess(){
     this.statewise.sort((a,b)=>b.active-a.active)
 
-    console.log(this.statewise);
+    //console.log(this.statewise);
     this.statewise.forEach(element => {
       this.statewiseactive.push(element.active)
       this.statewiseconfirmed.push(element.confirmed)
@@ -140,5 +151,23 @@ export class StatewiseDataComponent implements OnInit {
       }
       else this.state.push(element.state)
     });
+  }
+  getStateData($event){
+    //console.log($event);
+    //console.log(this.stateValue);
+    for (let index = 0; index < this.statewise.length; index++) {
+      if(this.statewise[index].state===this.stateValue){
+        //console.log("matched");
+          this.lastUpdate=this.statewise[index].lastupdatedtime
+          this.active=this.statewise[index].active
+          this.confirmed=this.statewise[index].confirmed
+          this.deaths=this.statewise[index].deaths
+          this.recovered=this.statewise[index].recovered
+          this.delConfirmed=this.statewise[index].deltaconfirmed
+          this.delDeaths=this.statewise[index].deltadeaths
+          this.delRecovered=this.statewise[index].deltarecovered
+      }
+      
+    }
   }
 }

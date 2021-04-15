@@ -1,4 +1,4 @@
-import { EventEmitter, Output, ViewChild } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 import {
@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
   total_deaths:number=0
   total_active:number=0
   total_recovered:number=0
+  vaccinationData:any
   color1=["#3E50B3","#26A544"]
   color2=["#DA3442"]
   constructor(private dataService:CovidApiService){
@@ -169,7 +170,9 @@ export class HomeComponent implements OnInit {
     this.dataService.getData().subscribe(
       data=>{
         this.data=data
-        console.log(this.data);
+        this.vaccinationData=this.data.tested[this.data.tested.length-1]
+        localStorage.setItem('tested',JSON.stringify(this.vaccinationData))
+        //console.log(this.vaccinationData);
         this.data.cases_time_series.forEach(element => {
           //console.log(element);
           this.dailyconfirmed.push(element.dailyconfirmed)

@@ -1,26 +1,26 @@
-<nav style="background-color: #3E50B3;color: white;" class="navbar navbar-expand-lg mb-3 d-flex align-items-center">
-  <div class="container-fluid">
-    <mat-icon>coronavirus</mat-icon>
-    <a style="text-decoration: none;color: white;" class="navbar-brand ml-1 ml-sm-2" href="#">CovidIndia-Stats</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <mat-icon style="color: white;">menu</mat-icon>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon mr-2" aria-label="Example icon-button with menu icon">
-            <a [routerLink]='["/state"]' style="text-decoration: none;color: white">statewise</a>
-          </button>
-          
-          <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon" aria-label="Example icon-button with menu icon">
-            <a href="https://github.com/palSitabja/covidIndiaStat-website" style="text-decoration: none;color: white">GitHub</a>
-          </button>
-          
-        </li>
-      </ul>
-    </div>
+<div class="container-fluid" style="margin-top: 3vh;margin-bottom: 4vh;">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="row title" style="padding-left: 20px;">
+        <mat-icon style="color: white;margin-top: 3px;">coronavirus</mat-icon>
+        <a style="text-decoration: none;color: white;font-family: 'Dancing Script', cursive;font-weight: bolder;font-size: x-large;" class="navbar-brand ml-1 ml-sm-2" href="#">CovidIndia-Stats</a>
+      </div>
+    </div> 
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="row d-flex button-row">
+        <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon mr-2" aria-label="Example icon-button with menu icon">
+          <a [routerLink]='["/state"]' style="text-decoration: none;color: white">statewise</a>
+        </button>
+        <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon mr-2" aria-label="Example icon-button with menu icon">
+          <a [routerLink]='["/vaccination"]' style="text-decoration: none;color: white">Vaccination</a>
+        </button>
+        <button mat-stroked-button color="primary" style="color: white;border: 1px solid white;" class="example-icon" aria-label="Example icon-button with menu icon">
+          <a href="https://github.com/palSitabja/covidIndiaStat-website" style="text-decoration: none;color: white" target="_blank">GitHub</a>
+        </button>
+      </div>
+    </div> 
   </div>
-</nav>
+</div>
 <div class="container-fluid">
   <router-outlet></router-outlet>
 </div>

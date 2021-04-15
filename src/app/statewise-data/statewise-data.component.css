@@ -1,0 +1,41 @@
+.my-card
+{
+    position:absolute;
+    left:40%;
+    top:-20px;
+    border-radius:50%;
+}
+input{
+    background-color: #3E50B3;
+    border: 2px solid gainsboro;
+    padding-left: 25px;
+}
+input::placeholder{
+    color: white;
+    margin-left: 10px;
+    position: absolute;
+    left: 25px;
+    top: 8px;
+}
+/* input:focus{
+    background-color: #3E50B3;
+} */
+.input-container i {
+    position: absolute;
+}
+.input-container{
+    margin-bottom: 10px;
+    width: 60%;
+}
+.icon {
+    padding: 13px;
+    color: rgb(254, 254, 255);
+    width: 70px;
+    text-align: left;
+ }
+
+ @media only screen and (max-width: 450px) {
+    .input-container {
+      width: 100%;
+    }
+  }

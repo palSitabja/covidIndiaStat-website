@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-sm-1 col-md-6 col-lg-3 mb-3">
             <mat-card>
-                <div style="margin-bottom: 4vh;">
+                <div style="margin-bottom: 5vh;">
                     <button  class="d-inline mr-4" mat-fab style="background-color: #2196f3;" aria-label="Example icon button with a bookmark icon">
                         <i class="fas fa-syringe fa-2x"></i>
                     </button>
@@ -18,11 +18,12 @@
                 <div class="col">
                     <h3 class="m-0 blue">Date {{this.vaccination.updatetimestamp}}</h3>
                     <hr style="background-color: #2196f3;">
-                    <h3 class="m-0 blue">Dose given: {{this.vaccination.totaldosesadministered}}</h3>
+                    <h3 class="m-0 blue">Dose Given: {{this.vaccination.totaldosesadministered}}</h3>
                     <h3 class="blue">Individuals Vaccinated: {{this.vaccination.totalindividualsvaccinated}}</h3>
                     <hr style="background-color: #2196f3;">
-                    <h3 class="m-0 blue">Rtpc sample collected: {{this.vaccination.totalrtpcrsamplescollectedicmrapplication}}</h3>
-                    <h3 class="blue">Samples tested: {{this.vaccination.totalsamplestested}}</h3>
+                    <h3 class="m-0 blue">RTPCR Sample Collected: {{this.vaccination.totalrtpcrsamplescollectedicmrapplication}}</h3>
+                    <h3 class="m-0 blue">Samples Tested: {{this.vaccination.totalsamplestested}}</h3>
+                    <h3 class="m-0 blue">Sessions Conducted: {{this.vaccination.totalsamplestested}}</h3>
                 </div>
             </mat-card>
         </div>
@@ -33,13 +34,16 @@
                     <i class="fas fa-user-nurse fa-2x"></i>
                 </button>
                 <h2  class="d-inline yellow">Covid Warriors</h2>
+                
             </div>
+            <hr style="background-color: #FCC006;margin-top:2vh">
                 <div class="col">
-                    <h4 class="text-center yellow">1st Dose vaccinated</h4>
+                    
+                    <h4 class="text-center yellow">1st Dose Vaccinated</h4>
                     <h3 class="m-0 yellow">Frontline Workers: {{this.vaccination.frontlineworkersvaccinated1stdose}}</h3>
                     <h3 class="m-0 yellow">Healthcare Workers: {{this.vaccination.healthcareworkersvaccinated1stdose}}</h3>
                     <hr style="background-color: #FCC006;">
-                    <h4 class="text-center yellow">2nd Dose vaccinated</h4>
+                    <h4 class="text-center yellow">2nd Dose Vaccinated</h4>
                     <h3 class="m-0 yellow">Frontline Workers: {{this.vaccination.frontlineworkersvaccinated2nddose}}</h3>
                     <h3 class="m-0 yellow">Healthcare Workers: {{this.vaccination.healthcareworkersvaccinated2nddose}}</h3>
                 </div>
@@ -53,12 +57,13 @@
                 </button>
                 <h2 class="d-inline green">Senior citizen</h2>
             </div>
+            <hr style="background-color: #26A544;margin-top:2vh">
                 <div class="col">
-                    <h4 class="text-center green">1st Dose vaccinated</h4>
+                    <h4 class="text-center green">1st Dose Vaccinated</h4>
                     <h3 class="m-0 green">Over 45 years: {{this.vaccination.over45years1stdose}}</h3>
                     <h3 class="m-0 green">Over 60 years: {{this.vaccination.over60years1stdose}}</h3>
                     <hr style="background-color: #26A544;">
-                    <h4 class="text-center green">2nd Dose vaccinated</h4>
+                    <h4 class="text-center green">2nd Dose Vaccinated</h4>
                     <h3 class="m-0 green">Over 45 years: {{this.vaccination.over45years2nddose}}</h3>
                     <h3 class="m-0 green">Over 60 years: {{this.vaccination.over60years2nddose}}</h3>
                 </div>
@@ -72,12 +77,13 @@
                 </button>
                 <h2 class="d-inline red">Children</h2>
             </div>
+            <hr style="background-color: #DA3442;margin-top:2vh">
                 <div class="col">
-                    <h4 class="text-center red">1st Dose vaccinated</h4>
+                    <h4 class="text-center red">1st Dose Vaccinated</h4>
                     <h3 class="m-0 red">Over 1 years: NONE</h3>
                     <h3 class="m-0 red">Over 20 years: NONE</h3>
                     <hr style="background-color: #DA3442;">
-                    <h4 class="text-center red">2nd Dose vaccinated</h4>
+                    <h4 class="text-center red">2nd Dose Vaccinated</h4>
                     <h3 class="m-0 red">Over 1 years: NONE</h3>
                     <h3 class="m-0 red">Over 20 years: NONE</h3>
                 </div>

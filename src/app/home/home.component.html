@@ -18,7 +18,7 @@
               </div>
               
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #2196f3">Today</h4>
+                <h4 class="text-center" style="margin: 0px;color: #2196f3">{{monthToshort(this.date[this.date.length-1])}}</h4>
                 <h3 class="text-center" style="margin: 0px;color: #2196f3;font-weight: bolder;letter-spacing: 2px;">{{this.dailyconfirmed[this.dailyconfirmed.length-1]}}</h3>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 <h3 class="text-center" style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{total_active}}</h3>  
               </div>
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #FCC006;">Today</h4>
+                <h4 class="text-center" style="margin: 0px;color: #FCC006;">{{monthToshort(this.date[this.date.length-1])}}</h4>
                 <h3 class="text-center" style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{"No Data"}}</h3>
               </div>
             </div>
@@ -64,7 +64,7 @@
                 <h3 class="text-center" style="margin: 0px;color: #26A544;font-weight: bolder;letter-spacing: 2px;">{{total_recovered}}</h3>  
               </div>
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #26A544;">Today</h4>
+                <h4 class="text-center" style="margin: 0px;color: #26A544;">{{monthToshort(this.date[this.date.length-1])}}</h4>
                 <h3 class="text-center" style="margin: 0px;color: #26A544;font-weight: bolder;letter-spacing: 2px;">{{this.dailyrecovered[this.dailyrecovered.length-1]}}</h3>
               </div>
             </div>
@@ -88,7 +88,7 @@
               </div>
               
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #DA3442;">Today</h4>
+                <h4 class="text-center" style="margin: 0px;color: #DA3442;">{{monthToshort(this.date[this.date.length-1])}}</h4>
                 <h3 class="text-center" style="margin: 0px;color: #DA3442;font-weight: bolder;letter-spacing: 2px;">{{this.dailydeceased[this.dailydeceased.length-1]}}</h3>
               </div>
             </div>

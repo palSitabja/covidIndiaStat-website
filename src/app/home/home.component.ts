@@ -191,7 +191,26 @@ export class HomeComponent implements OnInit {
       error=>this.errorMsg=error,
     )
   }
-
+  monthToshort(month:string){
+    const mon=month.split(' ')
+    const map = new Map()
+    map.set('January','Jan')
+    map.set('February','Feb')
+    map.set('March','Mar')
+    map.set('April','Apr')
+    map.set('May','May')
+    map.set('June','Jun')
+    map.set('July','Jul')
+    map.set('August','Aug')
+    map.set('September','Sep')
+    map.set('October','Oct')
+    map.set('November','Nov')
+    map.set('December','Dec')
+    //console.log();
+    
+    const result=mon[0]+' '+map.get(mon[1])+' '+mon[2]
+    return result
+  }
   ngOnInit(): void {
     this.fetchData();
   }

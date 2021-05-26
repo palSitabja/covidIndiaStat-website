@@ -12,12 +12,16 @@ import {MatCardModule} from '@angular/material/card';
 import { StatewiseDataComponent } from './statewise-data/statewise-data.component';
 import { HomeComponent } from './home/home.component';
 import { VaccinationComponent } from './vaccination/vaccination.component';
+import { SelectedStateComponent } from './statewise-data/selected-state/selected-state.component';
+import { InfoCardComponent } from './statewise-data/selected-state/info-card/info-card.component';
 @NgModule({
   declarations: [
     AppComponent,
     StatewiseDataComponent,
     HomeComponent,
-    VaccinationComponent
+    VaccinationComponent,
+    SelectedStateComponent,
+    InfoCardComponent
   ],
   imports: [
     BrowserModule,

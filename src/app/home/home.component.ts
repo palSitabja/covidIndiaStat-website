@@ -12,7 +12,7 @@ import {
   ApexStroke,
   ApexGrid,
   ApexTheme,
-  ApexFill
+  ApexFill,
 } from "ng-apexcharts";
 import { CovidApiService } from '../covid-api.service';
 
@@ -109,11 +109,6 @@ export class HomeComponent implements OnInit {
             show: false,
         },
     },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm"
-        }
-      }
     };
 
     this.chartDailyDeath = {
@@ -134,36 +129,6 @@ export class HomeComponent implements OnInit {
           color: '#DA3442'
         },
       },
-      chart: {
-        height: 270,
-        type: "area",
-        toolbar: {
-          show: false,
-        }
-      },
-      grid:{
-        show: false,
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "smooth"
-      },
-      xaxis: {
-        type: "datetime",
-        categories:this.date
-      },
-      yaxis: {//to make yaxis visible comment this part 'yaxis{}'
-        labels: {
-            show: false,
-        },
-    },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm"
-        }
-      }
     };
   }
   fetchData(){

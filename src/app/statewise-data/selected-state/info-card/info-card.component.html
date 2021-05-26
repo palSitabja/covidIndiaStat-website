@@ -1,0 +1,11 @@
+<div class="card mx-sm-1 p-3 shadow" [style.border-color]="this.color" style="border: 1px solid">
+    <div [style.background-color]="this.color" class="row shadow text-info p-3 mx-1" style="border-radius: inherit;">
+        <span [class]="this.icon" style="color: white;" class="fas fa-2x mr-3" aria-hidden="true"></span>
+        <h3 style="color:white ;font-weight: bolder;margin-bottom: 0px;">{{this.cardHeading}}</h3>
+    </div>
+
+    <div class="text-info text-center mt-2">
+        <h1 [style.color]="this.color" style="margin: 0px;">{{this.strongText}}<small class="ml-2"><i
+                    class="fas fa-arrow-up fa-sm pr-1"></i>{{this.smallText}}</small></h1>
+    </div>
+</div>

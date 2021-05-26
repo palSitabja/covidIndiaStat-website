@@ -1,0 +1,111 @@
+<mat-card class="w-100 card-container">
+    <div class="row d-flex justify-content-center pt-3 pl-3 pr-3 pb-1">
+        <h2 style="color: #2196f3;font-weight: bolder;" class="text-center alert alert-primary">Last Update:
+            {{this.lastUpdate}}</h2><br>
+    </div>
+
+    <div class="row w-100 ml-0">
+        <div class="col-md-3 mb-3">
+            <app-info-card [strongText]="this.confirmed" [smallText]="this.delConfirmed" [cardHeading]="'Confirmed'"
+                [color]="'#2196f3'" [icon]="'fa-check-circle'"></app-info-card>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <app-info-card [strongText]="this.active" [smallText]="'No Data'" [cardHeading]="'Active'"
+                [color]="'#FCC006'" [icon]="'fa-user-plus'"></app-info-card>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <app-info-card [strongText]="this.recovered" [smallText]="this.delRecovered" [cardHeading]="'Recovered'"
+                [color]="'#26A544'" [icon]="'fa-user-shield'"></app-info-card>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <app-info-card [strongText]="this.deaths" [smallText]="this.delDeaths" [cardHeading]="'Deceased'"
+                [color]="'#DA3442'" [icon]="'fa-frown'"></app-info-card>
+        </div>
+        <!-- <div class="col-md-3 mb-3">
+            <div class="card mx-sm-1 p-3 shadow" style="border: 1px solid #2196f3;">
+                <div class="row shadow text-info p-3 mx-1" style="background-color: #2196f3;border-radius: inherit;">
+                    <span style="color: white;" class="fas fa-check-circle fa-2x mr-3" aria-hidden="true"></span>
+                    <h3 style="color:white ;font-weight: bolder;margin-bottom: 0px;">Confirmed</h3>
+                </div>
+
+                <div class="text-info text-center mt-2">
+                    <h1 style="margin: 0px;color: #2196f3;">{{this.confirmed}}<small class="ml-2"><i
+                                class="fas fa-arrow-up fa-sm pr-1"></i>{{this.delConfirmed}}</small></h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card mx-sm-1 p-3 shadow" style="border: 1px solid #FCC006;">
+                <div class="row shadow text-info p-3 mx-1" style="background-color: #FCC006;border-radius: inherit;">
+                    <span style="color: white;" class="fas fa-user-plus fa-2x mr-3" aria-hidden="true"></span>
+                    <h3 style="color:white ;font-weight: bolder;margin-bottom: 0px;">Active</h3>
+                </div>
+
+                <div class="text-info text-center mt-2">
+                    <h1 style="margin: 0px;color: #FCC006;">{{this.active}}<small class="ml-2"><i
+                                class="fas fa-arrow-up fa-sm pr-1"></i>No Data</small></h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card mx-sm-1 p-3 shadow" style="border: 1px solid #26A544;">
+                <div class="row shadow text-info p-3 mx-1" style="background-color: #26A544;border-radius: inherit;">
+                    <span style="color: white;" class="fas fa-user-shield fa-2x mr-3" aria-hidden="true"></span>
+                    <h3 style="color:white ;font-weight: bolder;margin-bottom: 0px;">Recovered</h3>
+                </div>
+
+                <div class="text-info text-center mt-2">
+                    <h1 style="margin: 0px;color: #26A544;">{{this.recovered}}<small class="ml-2"><i
+                                class="fas fa-arrow-up fa-sm pr-1"></i>{{this.delRecovered}}</small></h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card mx-sm-1 p-3 shadow" style="border: 1px solid #DA3442;">
+                <div class="row shadow text-info p-3 mx-1" style="background-color: #DA3442;border-radius: inherit;">
+                    <span style="color: white;" class="fas fa-frown fa-2x mr-3" aria-hidden="true"></span>
+                    <h3 style="color:white ;font-weight: bolder;margin-bottom: 0px;">Deceased</h3>
+                </div>
+
+                <div class="text-info text-center mt-2">
+                    <h1 style="margin: 0px;color: #DA3442;">{{this.deaths}}<small class="ml-2"><i
+                                class="fas fa-arrow-up fa-sm pr-1"></i>{{this.delDeaths}}</small></h1>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+
+            <apx-chart [series]="chartDailyConfirm.series" [chart]="chartDailyConfirm.chart"
+                [xaxis]="chartDailyConfirm.xaxis" [yaxis]="chartDailyConfirm.yaxis" [title]="chartDailyConfirm.title"
+                [grid]="chartDailyConfirm.grid" [dataLabels]="chartDailyConfirm.dataLabels"
+                [stroke]="chartDailyConfirm.stroke" [colors]="color1"></apx-chart>
+
+        </div>
+    </div>
+    <div class="row d-flex justify-content-around">
+        <div class="col-md-6 col-sm-6 mb-3">
+
+            <apx-chart [series]="chartDailyRecovery.series" [chart]="chartDailyConfirm.chart"
+                [xaxis]="chartDailyRecovery.xaxis" [yaxis]="chartDailyConfirm.yaxis" [title]="chartDailyRecovery.title"
+                [grid]="chartDailyConfirm.grid" [dataLabels]="chartDailyConfirm.dataLabels"
+                [stroke]="chartDailyConfirm.stroke" [colors]="color2"></apx-chart>
+
+        </div>
+        <div class="col-md-6 col-sm-6 mb-3">
+
+            <apx-chart [series]="chartDailyDeath.series" [chart]="chartDailyConfirm.chart"
+                [xaxis]="chartDailyDeath.xaxis" [title]="chartDailyDeath.title" [grid]="chartDailyConfirm.grid"
+                [dataLabels]="chartDailyConfirm.dataLabels" [stroke]="chartDailyConfirm.stroke"
+                [theme]="chartDailyConfirm.theme" [yaxis]="chartDailyConfirm.yaxis" [colors]="color3"></apx-chart>
+
+        </div>
+    </div>
+</mat-card>

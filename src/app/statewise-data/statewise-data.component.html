@@ -8,43 +8,15 @@
     <option *ngFor="let state of statewise" [value]="state.state">
   </datalist>
 </div>
-<div style="margin-top: 7vh;" *ngIf="stateValue" class="container d-flex justify-content-center mt-4 mb-4">
-  <mat-card class="w-100">
-    <div class="row d-flex justify-content-center mb-4">
-      <h2 style="color: #2196f3;font-weight: bolder;" class="text-center">Last Update: {{this.lastUpdate}}</h2><br>
-    </div>
-
-    <div class="row w-100 ml-0">
-      <div class="col-md-3">
-          <div class="card mx-sm-1 p-3" style="border: 1px solid #2196f3;">
-              <div class="card shadow text-info p-3 my-card" style="background-color: #2196f3;"><span style="color: white;" class="fas fa-check-circle" aria-hidden="true"></span></div>
-              <div class="text-info text-center mt-3"><h4 style="color:#2196f3 ;font-weight: bolder;">Confirmed</h4></div>
-              <div class="text-info text-center mt-2"><h1 style="margin: 0px;color: #2196f3;">{{this.confirmed}}<small class="ml-2"><i class="fas fa-arrow-up fa-sm pr-1"></i>{{this.delConfirmed}}</small></h1></div>
-          </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card mx-sm-1 p-3" style="border: 1px solid #FCC006;">
-          <div class="card shadow text-info p-3 my-card" style="background-color: #FCC006;"><span style="color: white;" class="fas fa-user-plus" aria-hidden="true"></span></div>
-          <div class="text-info text-center mt-3"><h4 style="color:#FCC006;font-weight: bolder;">Active</h4></div>
-          <div class="text-info text-center mt-2"><h1 style="margin: 0px;color: #FCC006;">{{this.active}}<small class="ml-2"><i class="fas fa-arrow-up fa-sm pr-1"></i>No Data</small></h1></div>
-      </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card mx-sm-1 p-3" style="border: 1px solid #26A544;">
-          <div class="card shadow text-info p-3 my-card" style="background-color: #26A544;"><span style="color: white;" class="fas fa-user-shield" aria-hidden="true"></span></div>
-          <div class="text-info text-center mt-3"><h4 style="color: #26A544;font-weight: bolder;">Recovered</h4></div>
-          <div class="text-info text-center mt-2"><h1 style="margin: 0px;color: #26A544;">{{this.recovered}}<small class="ml-2"><i class="fas fa-arrow-up fa-sm pr-1"></i>{{this.delRecovered}}</small></h1></div>
-      </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card mx-sm-1 p-3" style="border: 1px solid #DA3442;">
-          <div class="card shadow text-info p-3 my-card" style="background-color: #DA3442;"><span style="color: white;" class="fas fa-frown" aria-hidden="true"></span></div>
-          <div class="text-info text-center mt-3"><h4 style="color:#DA3442 ;font-weight: bolder;">Deceased</h4></div>
-          <div class="text-info text-center mt-2"><h1 style="margin: 0px;color: #DA3442;">{{this.deaths}}<small class="ml-2"><i class="fas fa-arrow-up fa-sm pr-1"></i>{{this.delDeaths}}</small></h1></div>
-      </div>
-      </div>
-   </div>
-  </mat-card>
+<div style="margin-top: 7vh;" *ngIf="stateValue" class="container-fluid">
+  <!-- removed -->
+  <app-selected-state
+  [active]="active" [confirmed]="confirmed" [deaths]="deaths" [recovered]="recovered"
+  [delConfirmed]="delConfirmed" [delDeaths]="delDeaths" [delRecovered]="delRecovered"
+  [lastUpdate]="lastUpdate" [stateCode]="stateCode" [dailyconfirmed]="dailyconfirmed"
+  [dailydeceased]="dailydeceased" [dailyrecovered]="dailyrecovered"
+  >
+  </app-selected-state>
 </div>
 <div style="margin-top: 7vh;" class="container">
   <mat-card>

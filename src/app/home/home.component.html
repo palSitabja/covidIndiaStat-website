@@ -4,7 +4,7 @@
 </div>
 <div *ngIf="dailyconfirmed.length>0" class="row d-flex justify-content-around">
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px; height: 14vh;">
+      <mat-card class="shadow-sm" style="padding: 6px; height: 14vh;">
         <div class="row no-gutters">
           <div style="background-color: #2196f3;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 confirmed-shadow">
             <mat-icon class="mat-icons">verified_user</mat-icon>
@@ -28,7 +28,7 @@
     </div>
   
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px; height: 14vh;">
+      <mat-card class="shadow-sm" style="padding: 6px; height: 14vh;">
         <div class="row no-gutters">
           <div style="background-color: #FCC006;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 active-shadow">
             <mat-icon class="mat-icons">add_task</mat-icon>
@@ -51,7 +51,7 @@
     </div>
   
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px; height: 14vh;">
+      <mat-card class="shadow-sm" style="padding: 6px; height: 14vh;">
         <div class="row no-gutters">
           <div style="background-color: #26A544;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 recovery-shadow">
             <mat-icon class="mat-icons">emoji_people</mat-icon>
@@ -74,7 +74,7 @@
     </div>
   
     <div class="col-md-3 col-sm-10 mb-3">
-      <mat-card style="padding: 6px;height: 14vh;">
+      <mat-card class="shadow-sm" style="padding: 6px;height: 14vh;">
         <div class="row no-gutters">
           <div style="background-color: #DA3442;padding: 0px;height: 12.3vh;border-radius: 4px;"class="col-3 d-flex justify-content-center align-items-center mr-3 death-shadow">
             <mat-icon class="mat-icons">sentiment_dissatisfied</mat-icon>
@@ -116,14 +116,14 @@
     ></apx-chart>
       </mat-card>
     </div>
-    <div class="col-md-6 col-sm-6 mb-3">
+    <div class="col-md-6 col-sm-6 mb-2">
       <mat-card>
         <apx-chart
       [series]="chartDailyDeath.series"
-      [chart]="chartDailyDeath.chart"
-      [xaxis]="chartDailyDeath.xaxis"
+      [chart]="chartDailyConfirm.chart"
+      [xaxis]="chartDailyConfirm.xaxis"
       [title]="chartDailyDeath.title"
-      [grid]="chartDailyDeath.grid"
+      [grid]="chartDailyConfirm.grid"
       [dataLabels]="chartDailyConfirm.dataLabels"
       [stroke]="chartDailyConfirm.stroke"
       [theme]="chartDailyConfirm.theme"

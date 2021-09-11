@@ -1,14 +1,18 @@
-<div style="margin-top: 7vh; margin-bottom: 6vh;" class="container d-flex justify-content-center mb-3">
+<div style="margin-top: 10vh;" *ngIf="data==null" class="d-flex justify-content-center align-items-center">
+  <div style="width: 6rem; height: 6rem;margin-top: 20vh;" class="spinner-border text-light" role="status">
+  </div>
+</div>
+<div *ngIf="data!=null" style="margin-top: 7vh; margin-bottom: 6vh;" class="container d-flex justify-content-center mb-3">
   <div class="row input-container">
     <i class="fas fa-search icon"></i>
     <input class="form-control" placeholder="Enter state for more info" list="states" name="state"
       id="state" [(ngModel)]="stateValue" (change)="getStateData($event)">
   </div>
   <datalist id="states">
-    <option *ngFor="let state of statewise" [value]="state.state">
+    <option *ngFor="let state of stateNames" [value]="state">
   </datalist>
 </div>
-<div style="margin-top: 7vh;" *ngIf="stateValue" class="container-fluid">
+<div style="margin-top: 7vh;" *ngIf="stateValue && data!=null" class="container-fluid">
   <!-- removed -->
   <app-selected-state
   [active]="active" [confirmed]="confirmed" [deaths]="deaths" [recovered]="recovered"
@@ -18,8 +22,8 @@
   >
   </app-selected-state>
 </div>
-<div style="margin-top: 7vh;" class="container">
-  <mat-card>
+<div *ngIf="data!=null" style="margin-top: 7vh;" class="container">
+  <mat-card *ngIf="statewiseconfirmed.length>1">
     <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
       [plotOptions]="chartOptions.plotOptions" [xaxis]="chartOptions.xaxis" [stroke]="chartOptions.stroke"
       [fill]="chartOptions.fill" [yaxis]="chartOptions.yaxis" [title]="chartOptions.title"

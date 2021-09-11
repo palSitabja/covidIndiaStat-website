@@ -41,17 +41,52 @@ export class StatewiseDataComponent implements OnInit {
   public chartOptions: Partial<ChartOptions>;
   stateValue: string;
   statewise: any[];
-  statewiseactive: any[] = []
   statewiseconfirmed: any[] = []
   statewisedeaths: any[] = []
-  statewiselastupdatedtime: any[] = []
-  statewiserecovered: any[] = []
   state: any[] = []
-  stateCode: string
-
+  stateCodes: any
+  stateNames:string[]=[]
+  stateCodesData:any={
+    "AN":"Andaman Nicobar",
+    "AP":"Andhra Pradesh",
+    "AR":"Arunachal Pradesh",
+    "AS":"Assam",
+    "BR":"Bihar",
+    "CH":"Chandigarh",
+    "CT":"Chhattisgarh",
+    "DN":"Dadra Daman Diu",
+    "DL":"Delhi",
+    "GA":"Goa",
+    "GJ":"Gujarat",
+    "HR":"Haryana",
+    "HP":"Himachal Pradesh",
+    "JK":"Jammu Kashmir",
+    "JH":"Jharkhand",
+    "KA":"Karnataka",
+    "KL":"Kerala",
+    "LA":"Ladakh",
+    "LD":"Lakshadweep",
+    "MP":"Madhya Pradesh",
+    "MH":"Maharashtra",
+    "MN":"Manipur",
+    "ML":"Meghalaya",
+    "MZ":"Mizoram",
+    "NL":"Nagaland",
+    "OR":"Odisha",
+    "PY":"Puducherry",
+    "PB":"Punjab",
+    "RJ":"Rajasthan",
+    "SK":"Sikkim",
+    "TN":"Tamil Nadu",
+    "TG":"Telangana",
+    "TR":"Tripura",
+    "UP":"Uttar Pradesh",
+    "UT":"Uttarakhand",
+    "WB":"West Bengal"
+};
 
   stateData: any;
-  data: any;
+  data: any=null;
   dailyconfirmed: any[] = [[], []];
   dailydeceased: any[] = [[], []];
   dailyrecovered: any[] = [[], []];
@@ -64,7 +99,7 @@ export class StatewiseDataComponent implements OnInit {
   delConfirmed: string;
   delDeaths: string;
   delRecovered: string;
-  lastUpdate: Time
+  lastUpdate: any
   color1: ["#DA3442", "#2196F3"];
   upArrow = "&#8593"
   constructor(private stateService: CovidApiStatesService) {
@@ -72,7 +107,7 @@ export class StatewiseDataComponent implements OnInit {
       series: [
         {
           name: "Active",
-          data: this.statewiseactive
+          data: this.statewiseconfirmed
         },
         {
           name: "Deaths",
@@ -110,7 +145,7 @@ export class StatewiseDataComponent implements OnInit {
         show: false,
       },
       xaxis: {
-        categories: this.state,
+        categories: this.stateNames,
         labels: {
           show: false
         }
@@ -139,102 +174,98 @@ export class StatewiseDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.statewise = JSON.parse(localStorage.getItem('statewise'))
-    //console.log(this.statewise);
-    this.dataPreprocess()
-
     this.stateService.getStatesData().subscribe(
       (data) => {
         this.data = data
+        this.dataPreprocess()        
       },
       (error) => this.error = error
     )
+    
   }
+
   dataPreprocess() {
-    this.statewise.sort((a, b) => b.active - a.active)
-
-    //console.log(this.statewise);
-    this.statewise.forEach(element => {
-      this.statewiseactive.push(element.active)
-      this.statewiseconfirmed.push(element.confirmed)
-      this.statewisedeaths.push(element.deaths)
-      this.statewiselastupdatedtime.push(element.lastupdatedtime)
-      this.statewiserecovered.push(element.recovered)
-      if (element.state === "Jammu and Kashmir") {
-        this.state.push("J&K")
-      } else if (element.state === "Andaman and Nicobar Islands") {
-        this.state.push("Andaman")
-      } else if (element.state === "Dadra and Nagar Haveli and Daman and Diu") {
-        this.state.push("Daman_Diu")
-      }
-      else this.state.push(element.state)
-    });
-  }
-  getStateData($event) {
-    //console.log($event);
-    //console.log(this.stateValue);
-    for (let index = 0; index < this.statewise.length; index++) {
-      if (this.statewise[index].state === this.stateValue) {
-        //console.log("matched");
-        this.lastUpdate = this.statewise[index].lastupdatedtime
-        this.active = this.statewise[index].active
-        this.confirmed = this.statewise[index].confirmed
-        this.deaths = this.statewise[index].deaths
-        this.recovered = this.statewise[index].recovered
-        this.stateCode = this.statewise[index].statecode
-
-        this.dailyconfirmed = [[], []];
-        this.dailydeceased = [[], []];
-        this.dailyrecovered = [[], []];
-        this.stateData = this.data[this.stateCode]
-        //console.log(Object.keys(this.stateData.dates).pop());
-        var date = Object.keys(this.stateData.dates).pop()
-        //console.log(this.stateData.dates[date]);
-
-        if ("delta" in this.stateData.dates[date]) {
-          if ("confirmed" in this.stateData.dates[date].delta) {
-            this.delConfirmed = this.stateData.dates[date].delta.confirmed
-          } else {
-            this.delConfirmed = "No Data"
-          }
-          if ("recovered" in this.stateData.dates[date].delta) {
-            this.delRecovered = this.stateData.dates[date].delta.recovered
-          } else {
-            this.delRecovered = "No Data"
-          }
-          if ("deceased" in this.stateData.dates[date].delta) {
-            this.delDeaths = this.stateData.dates[date].delta.deceased
-          } else {
-            this.delDeaths = "No Data"
-          }
-
-        } else {
-          this.delDeaths = "No Data"
-          this.delRecovered = "No Data"
-          this.delConfirmed = "No Data"
-        }
-
-
-
-        for (var iterator in this.stateData.dates) {
-
-          if ("delta" in this.stateData.dates[iterator]) {
-            if ("confirmed" in this.stateData.dates[iterator].delta) {
-              this.dailyconfirmed[0].push(iterator)
-              this.dailyconfirmed[1].push(this.stateData.dates[iterator].delta.confirmed)
-            }
-            if ("recovered" in this.stateData.dates[iterator].delta) {
-              this.dailyrecovered[0].push(iterator)
-              this.dailyrecovered[1].push(this.stateData.dates[iterator].delta.recovered)
-            }
-            if ("deceased" in this.stateData.dates[iterator].delta) {
-              this.dailydeceased[0].push(iterator)
-              this.dailydeceased[1].push(this.stateData.dates[iterator].delta.deceased)
-            }
-          }
-        }
-      }
-
+    this.stateCodes=Object.keys(this.stateCodesData)
+    for (const key in this.stateCodesData) {
+      this.stateNames.push(this.stateCodesData[key])
     }
+
+    this.stateCodes.forEach(st=>{
+      //console.log(st);
+      
+      var stData=this.data[st]
+      //console.log(stData);
+      
+      var currDate=Object.keys(stData.dates)[Object.keys(stData.dates).length-1]
+      //console.log(stData.dates[currDate].delta);
+      if(stData.dates[currDate].delta.confirmed==undefined)
+        this.statewiseconfirmed.push(0)
+      else
+        this.statewiseconfirmed.push(stData.dates[currDate].delta.confirmed)
+
+      if(stData.dates[currDate].delta.deceased==undefined)
+        this.statewisedeaths.push(0)
+      else
+        this.statewisedeaths.push(stData.dates[currDate].delta.deceased)
+    })
+  }
+
+  getStateData($event){
+    this.dailyconfirmed=[[],[]]
+    this.dailyrecovered=[[],[]]
+    this.dailydeceased=[[],[]]
+    console.log(this.stateValue);
+    for (const key in this.stateCodesData) {
+      if(this.stateCodesData[key]===this.stateValue){
+        var stCode=key
+        break
+      }
+    }
+    this.statewise=this.data[stCode]
+        for (var iterator in this.statewise['dates']) {
+          if('delta' in this.statewise['dates'][iterator]){
+            var currentDateTotal=this.statewise['dates'][iterator]['delta']
+            if ("confirmed" in currentDateTotal) {
+              if(currentDateTotal.confirmed>=0){
+                this.dailyconfirmed[0].push(iterator)
+                this.dailyconfirmed[1].push(currentDateTotal.confirmed)
+              }
+            }else{
+              this.dailyconfirmed[0].push(iterator)
+              this.dailyconfirmed[1].push(0)
+            }
+
+            if ("recovered" in currentDateTotal) {
+              if(currentDateTotal.recovered>=0){
+                this.dailyrecovered[0].push(iterator)
+                this.dailyrecovered[1].push(currentDateTotal.recovered)
+              }
+            }else{
+              this.dailyrecovered[0].push(iterator)
+              this.dailyrecovered[1].push(0)
+            }
+
+            if ("deceased" in currentDateTotal) {
+              if(currentDateTotal.deceased>0){
+                this.dailydeceased[0].push(iterator)
+                this.dailydeceased[1].push(currentDateTotal.deceased)
+              }
+            }else{
+              this.dailydeceased[0].push(iterator)
+              this.dailydeceased[1].push(0)
+            }
+          }         
+        }
+        var delta=this.statewise['dates'][iterator]['delta']
+        this.lastUpdate = iterator
+        //this.active = this.statewise[index].active
+        this.delConfirmed = delta['confirmed']
+        this.delDeaths = delta['deceased']
+        this.delRecovered = delta['recovered']
+        var total=this.statewise['dates'][iterator]['total']
+        this.confirmed=total['confirmed']
+        this.deaths=total['deceased']
+        this.recovered=total['recovered']
+        this.active='No Data'
   }
 }

@@ -5,11 +5,18 @@ import { Observable } from "rxjs";
   providedIn: 'root'
 })
 export class CovidApiStatesService {
-  private url="https://cors-anywhere.herokuapp.com/https://api.covid19india.org/v4/min/timeseries.min.json"
+  private url="https://data.covid19india.org/v4/min/timeseries.min.json"
+
+  private stateUrl="src\assets\IndianStates.json";
   constructor(private http:HttpClient) { }
 
   getStatesData():Observable<any>{
     
     return this.http.get<any>(this.url)
   }
+
+  getStatesnames():Observable<any>{
+    return this.http.get<any>(this.stateUrl)
+  }
+
 }

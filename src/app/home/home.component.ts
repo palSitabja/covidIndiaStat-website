@@ -14,6 +14,7 @@ import {
   ApexTheme,
   ApexFill,
 } from "ng-apexcharts";
+import { CovidApiStatesService } from '../covid-api-states.service';
 import { CovidApiService } from '../covid-api.service';
 
 export type chartDailyConfirm = {
@@ -47,10 +48,16 @@ export class HomeComponent implements OnInit {
   today_active=0;
   today_recovered=0;
   today_deaths=0;
-  dailyconfirmed:any[]=[];
-  dailydeceased:any[]=[];
-  dailyrecovered:any[]=[];
+  today_date
   date:any[]=[];
+
+  dailyconfirmed: any[] = [[], []];
+  dailydeceased: any[] = [[], []];
+  dailyrecovered: any[] = [[], []];
+  vaccineD1: any[] = [[], []];
+  vaccineD2: any[] = [[], []];
+  dailyTest: any[] = [[], []];
+
   total_confirmed:number=0
   total_deaths:number=0
   total_active:number=0
@@ -58,18 +65,18 @@ export class HomeComponent implements OnInit {
   vaccinationData:any
   color1=["#3E50B3","#26A544"]
   color2=["#DA3442"]
-  constructor(private dataService:CovidApiService){
+  constructor(private dataService:CovidApiStatesService){
     this.chartDailyConfirm = {
       series: [
         {
           type:"area",
           name: "Daily Confirmed",
-          data: this.dailyconfirmed
+          data: this.dailyconfirmed[1]
         },
         {
           type:"area",
           name: "Daily Recovery",
-          data: this.dailyrecovered
+          data: this.dailyrecovered[1]
         }
       ],
       title: {
@@ -102,7 +109,7 @@ export class HomeComponent implements OnInit {
       },
       xaxis: {
         type: "datetime",
-        categories:this.date
+        categories:this.dailyconfirmed[0]
       },
       yaxis: {//to make yaxis visible comment this part 'yaxis{}'
         labels: {
@@ -115,7 +122,7 @@ export class HomeComponent implements OnInit {
       series: [
         {
           name: "Daily Deceased",
-          data: this.dailydeceased
+          data: this.dailydeceased[1]
         }
       ],
       title: {
@@ -132,26 +139,95 @@ export class HomeComponent implements OnInit {
     };
   }
   fetchData(){
-    this.dataService.getData().subscribe(
+    this.dataService.getStatesData().subscribe(
       data=>{
-        this.data=data
-        this.vaccinationData=this.data.tested[this.data.tested.length-1]
-        localStorage.setItem('tested',JSON.stringify(this.vaccinationData))
-        //console.log(this.vaccinationData);
-        this.data.cases_time_series.forEach(element => {
-          //console.log(element);
-          this.dailyconfirmed.push(element.dailyconfirmed)
-          this.dailyrecovered.push(element.dailyrecovered)
-          this.dailydeceased.push(element.dailydeceased)
-          this.date.push(element.date)
-          //console.log(this.dailyconfirmed);
-        });
-        localStorage.setItem('statewise',JSON.stringify(this.data.statewise))
+        //localStorage.clear()
+        //localStorage.setItem('data',JSON.stringify(data.TT))
+        this.data=data.TT
+        //console.log(this.data);
         
-        this.total_active=this.data.statewise[0].active
-        this.total_confirmed=this.data.statewise[0].confirmed
-        this.total_deaths=this.data.statewise[0].deaths
-        this.total_recovered=this.data.statewise[0].recovered
+        for (var iterator in this.data.dates) {
+          //console.log(iterator);
+          var currentDateTotal=this.data.dates[iterator].delta
+          if ("confirmed" in currentDateTotal) {
+            this.dailyconfirmed[0].push(iterator)
+            this.dailyconfirmed[1].push(currentDateTotal.confirmed)
+          }else{
+            this.dailyconfirmed[0].push(iterator)
+            this.dailyconfirmed[1].push(0)
+          }
+
+          if ("recovered" in currentDateTotal) {
+            this.dailyrecovered[0].push(iterator)
+            this.dailyrecovered[1].push(currentDateTotal.recovered)
+          }else{
+            this.dailyrecovered[0].push(iterator)
+            this.dailyrecovered[1].push(0)
+          }
+
+          if ("deceased" in currentDateTotal) {
+            this.dailydeceased[0].push(iterator)
+            this.dailydeceased[1].push(currentDateTotal.deceased)
+          }else{
+            this.dailydeceased[0].push(iterator)
+            this.dailydeceased[1].push(0)
+          }
+
+          if ("tested" in currentDateTotal) {
+            this.dailyTest[0].push(iterator)
+            this.dailyTest[1].push(currentDateTotal.tested)
+          }else{
+            this.dailyTest[0].push(iterator)
+            this.dailyTest[1].push(0)
+          }
+
+          if ("vaccinated1" in currentDateTotal) {
+            this.vaccineD1[0].push(iterator)
+            this.vaccineD1[1].push(currentDateTotal.vaccinated1)
+          }else{
+            this.dailyTest[0].push(iterator)
+            this.dailyTest[1].push(0)
+          }
+
+          if ("vaccinated2" in currentDateTotal) {
+            this.vaccineD2[0].push(iterator)
+            this.vaccineD2[1].push(currentDateTotal.vaccinated2)
+          }else{
+            this.dailyTest[0].push(iterator)
+            this.dailyTest[1].push(0)
+          }          
+        }
+        this.total_confirmed=this.data.dates[iterator].total.confirmed
+        this.today_confirmed=this.dailyconfirmed[1][this.dailyconfirmed[1].length-1]
+
+        this.total_active=this.data.dates[iterator].total.confirmed
+        this.today_active=this.chartDailyConfirm[this.dailyconfirmed.length-1]
+
+        this.total_recovered=this.data.dates[iterator].total.recovered
+        this.today_recovered=this.dailyrecovered[1][this.dailyrecovered[1].length-1]
+
+        this.total_deaths=this.data.dates[iterator].total.deceased
+        this.today_deaths=this.dailydeceased[1][this.dailydeceased[1].length-1]
+
+        this.today_date=this.dailyconfirmed[0][this.dailyconfirmed[0].length-1]
+                
+        // this.vaccinationData=this.data.tested[this.data.tested.length-1]
+        // localStorage.setItem('tested',JSON.stringify(this.vaccinationData))
+        // //console.log(this.vaccinationData);
+        // this.data.cases_time_series.forEach(element => {
+        //   //console.log(element);
+        //   this.dailyconfirmed.push(element.dailyconfirmed)
+        //   this.dailyrecovered.push(element.dailyrecovered)
+        //   this.dailydeceased.push(element.dailydeceased)
+        //   this.date.push(element.date)
+        //   //console.log(this.dailyconfirmed);
+        // });
+        
+        
+        // this.total_active=this.data.statewise[0].active
+        // this.total_confirmed=this.data.statewise[0].confirmed
+        // this.total_deaths=this.data.statewise[0].deaths
+        // this.total_recovered=this.data.statewise[0].recovered
       },
       error=>this.errorMsg=error,
     )

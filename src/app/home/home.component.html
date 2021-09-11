@@ -1,8 +1,8 @@
-<div style="margin-top: 10vh;" *ngIf="dailyconfirmed.length===0" class="d-flex justify-content-center align-items-center">
+<div style="margin-top: 10vh;" *ngIf="dailyconfirmed[1].length===0" class="d-flex justify-content-center align-items-center">
   <div style="width: 6rem; height: 6rem;margin-top: 20vh;" class="spinner-border text-light" role="status">
   </div>
 </div>
-<div *ngIf="dailyconfirmed.length>0" class="row d-flex justify-content-around">
+<div *ngIf="dailyconfirmed[1].length>0" class="row d-flex justify-content-around">
     <div class="col-md-3 col-sm-10 mb-3">
       <mat-card class="shadow-sm" style="padding: 6px; height: 14vh;">
         <div class="row no-gutters">
@@ -18,8 +18,8 @@
               </div>
               
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #2196f3">{{monthToshort(this.date[this.date.length-1])}}</h4>
-                <h3 class="text-center" style="margin: 0px;color: #2196f3;font-weight: bolder;letter-spacing: 2px;">{{this.dailyconfirmed[this.dailyconfirmed.length-1]}}</h3>
+                <h4 class="text-center" style="margin: 0px;color: #2196f3">{{today_date | date: 'd-MMM-yy'}}</h4>
+                <h3 class="text-center" style="margin: 0px;color: #2196f3;font-weight: bolder;letter-spacing: 2px;">{{today_confirmed}}</h3>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@
                 <h3 class="text-center" style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{total_active}}</h3>  
               </div>
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #FCC006;">{{monthToshort(this.date[this.date.length-1])}}</h4>
+                <h4 class="text-center" style="margin: 0px;color: #FCC006;">{{today_date | date: 'd-MMM-yy'}}</h4>
                 <h3 class="text-center" style="margin: 0px;color: #FCC006;font-weight: bolder;letter-spacing: 2px;">{{"No Data"}}</h3>
               </div>
             </div>
@@ -64,8 +64,8 @@
                 <h3 class="text-center" style="margin: 0px;color: #26A544;font-weight: bolder;letter-spacing: 2px;">{{total_recovered}}</h3>  
               </div>
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #26A544;">{{monthToshort(this.date[this.date.length-1])}}</h4>
-                <h3 class="text-center" style="margin: 0px;color: #26A544;font-weight: bolder;letter-spacing: 2px;">{{this.dailyrecovered[this.dailyrecovered.length-1]}}</h3>
+                <h4 class="text-center" style="margin: 0px;color: #26A544;">{{today_date | date: 'd-MMM-yy'}}</h4>
+                <h3 class="text-center" style="margin: 0px;color: #26A544;font-weight: bolder;letter-spacing: 2px;">{{today_recovered}}</h3>
               </div>
             </div>
           </div>
@@ -88,8 +88,8 @@
               </div>
               
               <div class="col shadow-sm">
-                <h4 class="text-center" style="margin: 0px;color: #DA3442;">{{monthToshort(this.date[this.date.length-1])}}</h4>
-                <h3 class="text-center" style="margin: 0px;color: #DA3442;font-weight: bolder;letter-spacing: 2px;">{{this.dailydeceased[this.dailydeceased.length-1]}}</h3>
+                <h4 class="text-center" style="margin: 0px;color: #DA3442;">{{today_date | date: 'd-MMM-yy'}}</h4>
+                <h3 class="text-center" style="margin: 0px;color: #DA3442;font-weight: bolder;letter-spacing: 2px;">{{today_deaths}}</h3>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
   <div class="container">
     
   </div>
-  <div  *ngIf="dailyconfirmed.length>0" class="row d-flex justify-content-around mt-md-5 mt-sm-2 p-2">
+  <div  *ngIf="dailyconfirmed[1].length>0" class="row d-flex justify-content-around mt-md-5 mt-sm-2 p-2">
     <div class="col-md-6 col-sm-6 mb-3">
       <mat-card>
         <apx-chart

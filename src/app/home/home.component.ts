@@ -62,6 +62,8 @@ export class HomeComponent implements OnInit {
   total_deaths:number=0
   total_active:number=0
   total_recovered:number=0
+  total_dose1:number=0;
+  total_dose2:number=0;
   vaccinationData:any
   color1=["#3E50B3","#26A544"]
   color2=["#DA3442"]
@@ -95,7 +97,7 @@ export class HomeComponent implements OnInit {
         type: "area",
         toolbar: {
           show: false,
-        }
+        },
       },
       grid:{
         show: false,
@@ -184,6 +186,7 @@ export class HomeComponent implements OnInit {
           if ("vaccinated1" in currentDateTotal) {
             this.vaccineD1[0].push(iterator)
             this.vaccineD1[1].push(currentDateTotal.vaccinated1)
+            this.total_dose1+=currentDateTotal.vaccinated1
           }else{
             this.dailyTest[0].push(iterator)
             this.dailyTest[1].push(0)
@@ -192,11 +195,18 @@ export class HomeComponent implements OnInit {
           if ("vaccinated2" in currentDateTotal) {
             this.vaccineD2[0].push(iterator)
             this.vaccineD2[1].push(currentDateTotal.vaccinated2)
+            this.total_dose2+=currentDateTotal.vaccinated2
           }else{
             this.dailyTest[0].push(iterator)
             this.dailyTest[1].push(0)
           }          
         }
+        localStorage.setItem('dose1',JSON.stringify(this.vaccineD1))
+        localStorage.setItem('dose2',JSON.stringify(this.vaccineD2))
+        localStorage.setItem('totalDose1',JSON.stringify(this.total_dose1))
+        localStorage.setItem('totalDose2',JSON.stringify(this.total_dose2))
+        //console.log(this.vaccineD1);
+        
         this.total_confirmed=this.data.dates[iterator].total.confirmed
         this.today_confirmed=this.dailyconfirmed[1][this.dailyconfirmed[1].length-1]
 
@@ -210,24 +220,6 @@ export class HomeComponent implements OnInit {
         this.today_deaths=this.dailydeceased[1][this.dailydeceased[1].length-1]
 
         this.today_date=this.dailyconfirmed[0][this.dailyconfirmed[0].length-1]
-                
-        // this.vaccinationData=this.data.tested[this.data.tested.length-1]
-        // localStorage.setItem('tested',JSON.stringify(this.vaccinationData))
-        // //console.log(this.vaccinationData);
-        // this.data.cases_time_series.forEach(element => {
-        //   //console.log(element);
-        //   this.dailyconfirmed.push(element.dailyconfirmed)
-        //   this.dailyrecovered.push(element.dailyrecovered)
-        //   this.dailydeceased.push(element.dailydeceased)
-        //   this.date.push(element.date)
-        //   //console.log(this.dailyconfirmed);
-        // });
-        
-        
-        // this.total_active=this.data.statewise[0].active
-        // this.total_confirmed=this.data.statewise[0].confirmed
-        // this.total_deaths=this.data.statewise[0].deaths
-        // this.total_recovered=this.data.statewise[0].recovered
       },
       error=>this.errorMsg=error,
     )
